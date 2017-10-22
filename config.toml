@@ -1,32 +1,54 @@
 # Site settings
 baseurl = "https://cgk.sh/"
 languageCode = "en-us"
-title = "C to the G to the K"
-theme = "hugrid"
-# Enter your tracking code to enable Google Analytics
-googleAnalytics = "UA-XXXXXXXX-Y"
+title = "Colby GK"
+theme = "hugo-xmag"
 
 contentdir = "content"
 datadir = "data"
 layoutdir = "layouts"
 publishdir = "public"
 
+googleAnalytics = ""
+disqusShortname = ""
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+preserveTaxonomyNames = true
+footnotereturnlinkcontents = "↩"
+hasCJKLanguage = true
+enableEmoji = true
+paginate = 6
+
+[permalinks]
+    post = "/post/:year/:month/:day/:slug/"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+[[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 3
+[[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
+[[menu.main]]
+    name = "Subscribe"
+    url = "/index.xml"
+
 [params]
-    # Meta
-    title = "CGK"
-    subtitle = "Half Mexican by Marriage"
-    author = "Colby Gutierrez-Kraybill"
-    description = "Personal."
-    keywords = ""
+    description = "A website built through Hugo and blogdown."
+    summary_length = 300
+    github_edit = "https://github.com/yihui/hugo-xmag/edit/master/exampleSite/content/"
+    footer = "&copy; [Colby GK](https://cgk.sh) 2017 | [Github](https://github.com/colbygk) | [Twitter](https://twitter.com/colbygk)"
 
-    # Body background color
-    bodybgcolor = "#f9f9f9"
+[params.text]
+    back = "&larr; Back to Home"
+    edit = "Edit this page &rarr;"
+    truncated = "&hellip;"
 
-    # Preview container button text
-    buttontext = "Get the theme"
-
-    # Footer text
-    footertext = "Hugo Theme Made by [Codrops](http://tympanus.net/codrops/2013/03/19/thumbnail-grid-with-expanding-preview/), [Hugo](http://gohugo.io) and [me](https://github.com/aerohub)"
-
-    # add extra-css
-    # custom_css = ['css/extra1.css', 'css/extra2.css']
