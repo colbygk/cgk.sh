@@ -1,54 +1,43 @@
-# Site settings
-baseurl = "https://cgk.sh/"
+baseURL = "/"
 languageCode = "en-us"
-title = "Colby GK"
-theme = "hugo-xmag"
+DefaultContentLanguage = "en"
 
-contentdir = "content"
-datadir = "data"
-layoutdir = "layouts"
-publishdir = "public"
-
-googleAnalytics = ""
-disqusShortname = ""
-ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
-preserveTaxonomyNames = true
-footnotereturnlinkcontents = "↩"
-hasCJKLanguage = true
-enableEmoji = true
-paginate = 6
-
-[permalinks]
-    post = "/post/:year/:month/:day/:slug/"
-
-[[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 1
-[[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 2
-[[menu.main]]
-    name = "Categories"
-    url = "/categories/"
-    weight = 3
-[[menu.main]]
-    name = "Tags"
-    url = "/tags/"
-    weight = 4
-[[menu.main]]
-    name = "Subscribe"
-    url = "/index.xml"
+title = "CgK"
+theme = "docdock"
 
 [params]
-    description = "A website built through Hugo and blogdown."
-    summary_length = 300
-    github_edit = "https://github.com/yihui/hugo-xmag/edit/master/exampleSite/content/"
-    footer = "&copy; [Colby GK](https://cgk.sh) 2017 | [Github](https://github.com/colbygk) | [Twitter](https://twitter.com/colbygk)"
+editURL = "https://github.com/colbygk/cgk.sh/edit/master/content/"
+showVisitedLinks = true # default is false
+themeStyle = "original" # "original" or "simpleflat" # default "original"
+themeVariant = "" # choose theme variant "green", "gold" , "gray", "blue" (default)
+ordersectionsby = "weight" # ordersectionsby = "title"
+disableHomeIcon = false # default is false
+disableSearch = false # default is false
+disableNavChevron = false # set true to hide next/prev chevron, default is false
 
-[params.text]
-    back = "&larr; Back to Home"
-    edit = "Edit this page &rarr;"
-    truncated = "&hellip;"
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
 
+
+[[menu.shortcuts]]
+pre = "<h3>More</h3>"
+name = "<i class='fa fa-github'></i> Github repo"
+identifier = "ds"
+url = "https://github.com/vjeantet/hugo-theme-docdock"
+weight = 10
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-camera'></i> Showcases"
+url = "/showcase"
+weight = 11
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-bookmark'></i> Hugo Documentation"
+identifier = "hugodoc"
+url = "https://gohugo.io/"
+weight = 20
+
+[[menu.shortcuts]]
+name = "<i class='fa fa-bullhorn'></i> Credits"
+url = "/credits"
+weight = 30
