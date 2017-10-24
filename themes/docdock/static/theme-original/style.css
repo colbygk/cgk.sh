@@ -72,7 +72,7 @@
 .panel {
   background-color: white !important; }
   .panel-body {
-    color: #323232 !important; }
+    color: #DDCA7D !important; }
 
 /* This feels so wrong... I'm re-theming bootstrap in here, there has to be a cleaner way. */
 /* TODO: Build bootstrap with the rest of the CSS? */
@@ -126,7 +126,7 @@
 
 body {
   font-size: 16px !important;
-  color: #323232 !important; }
+  color: black !important; }
 
 #body a.highlight, #body a.highlight:hover, #body a.highlight:focus {
   text-decoration: none;
@@ -144,7 +144,7 @@ body {
   content: "";
   height: 1px;
   width: 0%;
-  background-color: #238fbd;
+  background-color: #B88B4A;
   -webkit-transition: width 0.35s ease;
   -moz-transition: width 0.35s ease;
   -ms-transition: width 0.35s ease;
@@ -164,7 +164,8 @@ body {
 #toc-menu {
   border-right: thin solid #DAD8D8 !important;
   padding-right: 1rem !important;
-  margin-right: 0.5rem !important; }
+  margin-right: 0.5rem !important;
+  color: #DDCA7D !important; }
 
 #top-bar {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
@@ -243,7 +244,7 @@ body {
 
 /* anchors */
 .anchor {
-  color: #2053AB;
+  color: #DDCA7D;
   font-size: 0.5em;
   cursor: pointer;
   visibility: hidden;
@@ -256,7 +257,7 @@ body {
   transition: color 0.35s ease; }
 
 .anchor:hover {
-  color: #238fbd;
+  color: #B88B4A;
   -webkit-transition: color 0.35s ease;
   -moz-transition: color 0.35s ease;
   -ms-transition: color 0.35s ease;
@@ -321,7 +322,7 @@ figcaption h4 {
 
 .footline {
   margin-top: 3rem;
-  border-top: 1px dashed #183f81;
+  border-top: 1px dashed #B88B4A;
   font-size: smaller; }
 
 #top-github-link, #body #breadcrumbs {
@@ -348,14 +349,14 @@ body #chapter h1 {
   font-size: 3.5rem; }
 
 a {
-  color: #2053AB;
+  color: #DDCA7D;
   -webkit-transition: color 0.15s ease;
   -moz-transition: color 0.15s ease;
   -ms-transition: color 0.15s ease;
   transition: color 0.15s ease; }
 
 a:hover {
-  color: #238fbd;
+  color: #B88B4A;
   -webkit-transition: color 0.15s ease;
   -moz-transition: color 0.15s ease;
   -ms-transition: color 0.15s ease;
@@ -395,18 +396,24 @@ textarea:hover, input[type="email"]:hover, input[type="number"]:hover, input[typ
   border-color: #c4c4c4; }
 
 textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, select[multiple=multiple]:focus {
-  border-color: #2053AB;
+  border-color: #DDCA7D;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(0, 169, 218, 0.7); }
 
 #header-wrapper {
-  background: #2053AB;
+  background: #242331; /* header _color */
   color: #fff;
   text-align: center;
-  border-bottom: 1px solid #183f81;
+  border-bottom: 1px solid #B88B4A;
   padding: 1rem; }
 
 #header a {
   display: inline-block; }
+
+#header p {
+  font-family: "Libre Baskerville", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-size: 7em;
+  margin: .75em 0.1em !important;
+  padding: 0 !important;}
 
 #header #logo-svg {
   width: 8rem;
@@ -418,8 +425,8 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 .searchbox {
   margin-top: 1rem;
   position: relative;
-  border: 1px solid #6795e3;
-  background: #183f81;
+  border: 1px solid #A27035; /* search border _color */
+  background: #251605; /* #533E2D;  /* search _color */
   border-radius: 4px; }
 
 .searchbox label {
@@ -533,6 +540,9 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 #body-inner {
   margin-bottom: 5rem; }
 
+#body-inner h2.post-title a {
+  color: black !important; }
+
 #chapter {
   display: flex;
   align-items: center;
@@ -545,7 +555,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
   max-width: 80%; }
 
 #chapter h3 {
-  font-family: "Lato", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-family: "Open Sans", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight: 300;
   text-align: center; }
 
@@ -566,7 +576,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
   margin: 0; }
 
 body {
-  font-family: "Lato", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-family: "Open Sans", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight: normal;
   line-height: 1.6;
   font-size: 18px !important; }
@@ -575,14 +585,14 @@ body {
     font-weight: bold; }
 
 h2, h3, h4, h5, h6 {
-  font-family: "Lato", "Work Sans Bold", "Helvetica Bold", "Tahoma Bold", "Geneva Bold", "Arial Bold", sans-serif;
+  font-family: "Open Sans", "Work Sans Bold", "Helvetica Bold", "Tahoma Bold", "Geneva Bold", "Arial Bold", sans-serif;
   text-rendering: optimizeLegibility;
-  color: #5e5e5e;
+  color: #060606;
   font-weight: 400;
   letter-spacing: -1px; }
 
 h1 {
-  font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-family: "Libre Baskerville", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   text-align: center;
   text-transform: uppercase;
   color: #060606;
@@ -706,14 +716,14 @@ hr {
   padding: 25px;
   float: left;
   clear: both;
-  background: #183f81;
+  background: #B88B4A; /* side bar title _color */
   color: #fff; }
 
 #body a.anchor-link {
   color: #ccc; }
 
 #body a.anchor-link:hover {
-  color: #183f81; }
+  color: #B88B4A; }
 
 #body-inner .tabs-wrapper.ui-theme-badges {
   background: #1d1f21; }
@@ -752,7 +762,7 @@ td {
   color: #323232; }
 
 .button {
-  background: #183f81;
+  background: #B88B4A;
   color: #fff;
   box-shadow: 0 3px 0 #00a5d4; }
 
@@ -798,7 +808,7 @@ td {
 
 .bullet-icon {
   float: left;
-  background: #183f81;
+  background: #B88B4A;
   padding: 0.875rem;
   width: 3.5rem;
   height: 3.5rem;
@@ -808,7 +818,7 @@ td {
   text-align: center; }
 
 .bullet-icon-1 {
-  background: #183f81; }
+  background: #B88B4A; }
 
 .bullet-icon-2 {
   background: #00f3d8; }
@@ -827,7 +837,7 @@ td {
   z-index: 1000000;
   display: none;
   padding: 5px 8px;
-  font: normal normal 11px/1.5 "Lato", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font: normal normal 11px/1.5 "Open Sans", "Work Sans", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   color: #fff;
   text-align: center;
   text-decoration: none;
@@ -1014,7 +1024,7 @@ td {
   background: #34495E; }
 
 #top-bar {
-  background: #f7f7f7;
+  background: #242331;
   border-radius: 2px;
   margin: 0rem -1rem 2rem;
   padding: 0 1rem;
@@ -1034,7 +1044,8 @@ td {
   width: calc(100% - 120px); }
 
 #body #breadcrumbs .links {
-  font-size: 0.8em; }
+  font-size: 0.8em;
+  color: white;}
 
 #body #breadcrumbs span.path {
   overflow: hidden;
@@ -1114,7 +1125,7 @@ pre .copy-to-clipboard:hover {
   margin-right: 1rem !important; }
 
 #sidebar {
-  background-color: #2053AB;
+  background-color: #A27035; /* side bar _color */
   position: fixed;
   top: 0;
   width: 300px;
@@ -1159,7 +1170,7 @@ pre .copy-to-clipboard:hover {
     top: 0.7rem;
     font-size: 80%; }
   #sidebar .parent li, #sidebar .active li {
-    border-left: 1px solid gray; }
+    border-left: 1px solid #DDCA7D; }
   #sidebar h5.parent a {
     background: #201b24;
     color: #d9d9d9 !important; }
@@ -1188,7 +1199,7 @@ pre .copy-to-clipboard:hover {
     #sidebar ul.topics label {
       margin-top: 10px;
       /*margin-bottom: 5px;*/
-      font-family: 'Novacento Sans Wide', 'Helvetica', 'Tahoma', 'Geneva', 'Arial', sans-serif;
+      font-family: 'Libre Baskerville', 'Helvetica', 'Tahoma', 'Geneva', 'Arial', sans-serif;
       font-weight: 100;
       color: white; }
     #sidebar ul.topics.searched ul {
@@ -1207,7 +1218,7 @@ pre .copy-to-clipboard:hover {
       opacity: 0.5;
       font-weight: normal; }
     #sidebar ul li .category-icon {
-      color: gray; }
+      color: white; }
     #sidebar ul.topics > li.parent a, #sidebar ul.topics > li.active a {
       color: #fff;
       -webkit-transition: color 0.15s ease;
@@ -1221,14 +1232,14 @@ pre .copy-to-clipboard:hover {
       -ms-transition: color 0.15s ease;
       transition: color 0.15s ease; }
     #sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
-      background: #183f81;
+      background: #B88B4A;
       margin-left: -1rem;
       margin-right: -1rem;
       padding-left: 1rem;
       padding-right: 1rem; }
     #sidebar ul li.active > a {
-      background: white;
-      color: gray !important;
+      background: #A27035;
+      color: white !important;
       margin-left: -1rem;
       margin-right: -1rem;
       padding-left: 1rem;
@@ -1265,7 +1276,7 @@ pre .copy-to-clipboard:hover {
       float: left;
       top: 12px;
       left: -10px;
-      color: gray; }
+      color: white; }
     #sidebar ul li.visited.active > a .read-icon {
       left: 7px; }
     #sidebar ul li .category-icon {
@@ -1288,7 +1299,7 @@ pre .copy-to-clipboard:hover {
   #sidebar.showVisitedLinks ul li a span {
     width: calc(100% - 8px); }
   #sidebar #shortcuts h3 {
-    font-family: 'Novacento Sans Wide', 'Helvetica', 'Tahoma', 'Geneva', 'Arial', sans-serif;
+    font-family: 'Libre Baskerville', 'Helvetica', 'Tahoma', 'Geneva', 'Arial', sans-serif;
     color: #fff; }
 
 /*
@@ -1345,6 +1356,12 @@ pre .copy-to-clipboard:hover {
     display: table; } }
 
 @media only all and (max-width: 59.938em) {
+#header p {
+  font-family: "Libre Baskerville", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-size: 5em;
+  margin: .75em 0.1em !important;
+  padding: 0 !important;}
+
   #body .nav {
     display: table-cell;
     position: static;
