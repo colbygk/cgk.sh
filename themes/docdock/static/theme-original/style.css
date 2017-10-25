@@ -3,7 +3,6 @@
 	Built with SCSS.
 	If you would like to explore this CSS,
 	use source map feature of your browser.
- */
 @font-face {
   font-family: 'Novacento Sans Wide';
   src: url("../fonts/Novecentosanswide-UltraLight-webfont.eot");
@@ -22,6 +21,7 @@
   font-style: normal;
   font-weight: 700;
   src: local("Lato Bold"), local("Lato-Bold"), url(../fonts/Lato-Regular.woff2) format("woff2"), url(../fonts/Lato-Bold.ttf) format("truetype"); }
+ */
 
 /* Table of contents */
 .progress ul {
@@ -411,9 +411,9 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
 
 #header p {
   font-family: "Libre Baskerville", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-  font-size: 7em;
-  margin: .75em 0.1em !important;
-  padding: 0 !important;}
+  font-size: 4.5em;
+  margin: .75em 0.05em 0em 0em !important;
+  padding: 0 0 0.70em !important;}
 
 #header #logo-svg {
   width: 8rem;
@@ -709,7 +709,23 @@ pre code {
   font-size: 15px; }
 
 hr {
-  border-bottom: 4px solid #F0F2F4; }
+  border-bottom: 0px solid #F0F2F4; }
+
+hr.heart {
+  border-top: 1px dashed #B88B4A;
+  text-align: center;
+}
+
+hr.heart:after {
+  content: '♥';
+  display: inline-block;
+  position: relative;
+  top: -.75em;
+  padding: 0 1em;
+  color: #fc0b0b;
+  background: #fff;
+  font-size: 1.5em;
+}
 
 .page-title {
   margin-top: -25px;
@@ -1358,9 +1374,9 @@ pre .copy-to-clipboard:hover {
 @media only all and (max-width: 59.938em) {
 #header p {
   font-family: "Libre Baskerville", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
-  font-size: 5em;
-  margin: .75em 0.1em !important;
-  padding: 0 !important;}
+  font-size: 3em;
+  margin: .75em .05em 0em 0em !important;
+  padding: 0 0 0.5em !important;}
 
   #body .nav {
     display: table-cell;

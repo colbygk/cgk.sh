@@ -2,7 +2,7 @@ baseURL = "/"
 languageCode = "en-us"
 DefaultContentLanguage = "en"
 
-title = "CgK"
+title = "Colby GK"
 theme = "docdock"
 
 [params]
@@ -20,24 +20,13 @@ home = [ "HTML", "RSS", "JSON"]
 
 
 [[menu.shortcuts]]
-pre = "<h3>More</h3>"
 name = "<i class='fa fa-github'></i> Github"
 identifier = "ds"
 url = "https://github.com/colbygk"
 weight = 10
 
 [[menu.shortcuts]]
-name = "<i class='fa fa-camera'></i> Showcases"
+name = "<i class='fa fa-flask'></i> Projects"
 url = "/showcase"
 weight = 11
 
-[[menu.shortcuts]]
-name = "<i class='fa fa-bookmark'></i> Hugo Documentation"
-identifier = "hugodoc"
-url = "https://gohugo.io/"
-weight = 20
-
-[[menu.shortcuts]]
-name = "<i class='fa fa-bullhorn'></i> Credits"
-url = "/credits"
-weight = 30
