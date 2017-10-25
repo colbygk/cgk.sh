@@ -20,13 +20,13 @@ home = [ "HTML", "RSS", "JSON"]
 
 
 [[menu.shortcuts]]
-name = "<i class='fa fa-github'></i> Github"
+name = "<i class='fa fa-github'></i> github"
 identifier = "ds"
 url = "https://github.com/colbygk"
 weight = 10
 
 [[menu.shortcuts]]
-name = "<i class='fa fa-flask'></i> Projects"
+name = "<i class='fa fa-flask'></i> projects"
 url = "/showcase"
 weight = 11
 

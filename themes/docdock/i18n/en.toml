@@ -2,25 +2,25 @@
 other = "Create a _header.md to customize this"
 
 [Search-placeholder]
-other = "Search..."
+other = "search..."
 
 [Clear-History]
-other = "Clear History"
+other = "clear History"
 
 [Page]
-other = "Page"
+other = "page"
 
 [Next-Pages]
-other = "Next Pages"
+other = "next pages"
 
 [Previous-Pages]
-other = "Previous Pages"
+other = "previous pages"
 
 [pagination-on]
 other = "of"
 
 [Attachments-label]
-other = "Attachments"
+other = "attachments"
 
 [title-404]
 other = "Error"
@@ -32,4 +32,4 @@ other = "Woops. Looks like this page doesn't exist."
 other = "Go to homepage"
 
 [Edit-this-page]
-other = "Edit page"
+other = "edit page"
