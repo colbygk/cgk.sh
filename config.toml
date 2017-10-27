@@ -27,6 +27,6 @@ weight = 10
 
 [[menu.shortcuts]]
 name = "<i class='fa fa-flask'></i> projects"
-url = "/showcase"
+url = "/projects"
 weight = 11
 
