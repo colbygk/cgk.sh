@@ -1292,8 +1292,7 @@ pre .copy-to-clipboard:hover {
       font-size: xx-small;
       position: absolute;
       float: left;
-      top: 12px;
-      left: -10px;
+      top: 1.3em;
       color: white; }
     #sidebar ul li.visited.active > a .read-icon {
       left: 7px; }
