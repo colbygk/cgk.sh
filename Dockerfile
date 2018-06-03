@@ -1,5 +1,6 @@
 from node:10
 
+RUN apt-get update && apt-get install -y GraphicsMagick
 RUN mkdir -p /cgk.sh
 WORKDIR /cgk.sh
 COPY . ./
