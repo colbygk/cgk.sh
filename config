@@ -14,4 +14,4 @@ admin-tracking            : true
 default-image-converter   : gm
 
 // Default theme
-default-theme             : default
+default-theme             : cgk
