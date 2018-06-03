@@ -1,0 +1,38 @@
+version: '3.4'
+
+volumes:
+  npm_data:
+  runtime_data:
+
+networks:
+  network:
+
+services:
+  cgk.sh:
+    container_name: cgk.sh
+    image: cgk.sh:latest
+    hostname: cgk.sh
+    environment:
+      - SSL_KEY=/ssl/cloudflare.key
+      - SSL_CRT=/ssl/cloudflare.crt
+      - PORT=8551
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: cgk.sh:latest
+    command: node ssl.js
+    volumes:
+      - type: bind
+        source: ./
+        target: /cgk.sh
+        consistency: cached
+        volume:
+          nocopy: true
+      - npm_data:/cgk.sh/node_modules
+      - runtime_data:/runtime
+      - "./cloudflare.crt:/ssl/cloudflare.crt"
+      - "./cloudflare.key:/ssl/cloudflare.key"
+    ports:
+      - "443:8551"
+    networks:
+      - network

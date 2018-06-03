@@ -13,14 +13,12 @@ services:
     image: cgk.sh:latest
     hostname: cgk.sh
     environment:
-      - SSL_KEY=/ssl/cloudflare.key
-      - SSL_CRT=/ssl/cloudflare.crt
       - PORT=8551
     build:
       context: ./
       dockerfile: Dockerfile
     image: cgk.sh:latest
-    command: node ssl.js
+    command: node debug.js
     volumes:
       - type: bind
         source: ./
@@ -30,10 +28,7 @@ services:
           nocopy: true
       - npm_data:/cgk.sh/node_modules
       - runtime_data:/runtime
-      - "./cloudflare.crt:/ssl/cloudflare.crt"
-      - "./cloudflare.key:/ssl/cloudflare.key"
     ports:
-      - "443:8551"
       - "80:8551"
     networks:
       - network
