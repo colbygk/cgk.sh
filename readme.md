@@ -7,7 +7,7 @@ Create/update SSL certificate information, currently fronted by Cloudflare and t
 
 ```
 docker-compose -f production.yml build
-docker-compose up
+docker-compose -f production.yml up -d
 ```
 
 ## Development
