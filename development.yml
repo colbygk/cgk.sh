@@ -10,15 +10,15 @@ networks:
 services:
   cgk.sh:
     container_name: cgk.sh
-    image: cgk.sh:latest
+    image: cgk.sh:dev
     hostname: cgk.sh
     environment:
       - PORT=8551
     build:
       context: ./
       dockerfile: Dockerfile
-    image: cgk.sh:latest
-    command: node debug.js
+    image: cgk.sh:dev
+    command: node debug.js 8551
     volumes:
       - type: bind
         source: ./

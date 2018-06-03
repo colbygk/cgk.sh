@@ -10,7 +10,7 @@ networks:
 services:
   cgk.sh:
     container_name: cgk.sh
-    image: cgk.sh:latest
+    image: cgk.sh:prod
     hostname: cgk.sh
     environment:
       - SSL_KEY=/ssl/cloudflare.key
@@ -19,7 +19,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: cgk.sh:latest
+    image: cgk.sh:prod
     command: node ssl.js
     volumes:
       - type: bind

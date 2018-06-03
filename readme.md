@@ -1,4 +1,3 @@
-[![MIT License][license-image]][license-url]
 
 # cgk.sh
 
