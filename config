@@ -1,9 +1,9 @@
-name                      : Premium CMS
-version                   : 11.0.0
-author                    : Peter Širka
+name                      : cgk.sh
+version                   : 1.0.0
+author                    : Colby Gutierrez-Kraybill
 
 // Hidden super admin in the form username:password
-admin-superadmin          : admin:admin
+admin-superadmin          : cgk:TLMP4H85TBgYi6kxbzZkn6xUA
 admin-cookie              : __admin
 
 // Enables real-time visitor tracking
