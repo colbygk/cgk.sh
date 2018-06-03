@@ -3,7 +3,7 @@ version                   : 1.0.0
 author                    : Colby Gutierrez-Kraybill
 
 // Hidden super admin in the form username:password
-admin-superadmin          : cgk:TLMP4H85TBgYi6kxbzZkn6xUA
+admin-superadmin          : RESETME:RESETME
 admin-cookie              : __admin
 
 // Enables real-time visitor tracking
