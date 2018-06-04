@@ -12,6 +12,11 @@ exports.install = function() {
 function view_cms() {
 	var self = this;
 	self.CMSpage();
+
+  self.header('Content-Security-Policy', 'script-src \'self\'');
+  self.header('Referrer-Policy', 'strict-origin');
+  self.header('X-Xss-Protection', '1; mode=block');
+  self.header('X-Frame-Options', 'SAMEORIGIN');
 }
 
 function view_posts() {
