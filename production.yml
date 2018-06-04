@@ -3,6 +3,7 @@ version: '3.4'
 volumes:
   npm_data:
   runtime_data:
+  databases:
 
 networks:
   network:
@@ -30,6 +31,7 @@ services:
           nocopy: true
       - npm_data:/cgk.sh/node_modules
       - runtime_data:/runtime
+      - databases:/cgk.sh/databases
       - "./cloudflare.crt:/ssl/cloudflare.crt"
       - "./cloudflare.key:/ssl/cloudflare.key"
     ports:
