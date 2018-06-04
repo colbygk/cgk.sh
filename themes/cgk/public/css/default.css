@@ -31,7 +31,6 @@ header nav .fa { margin-right: 8px; }
 header .linkbutton { border-radius: 100px; color: #D0D0D0; font-size: 20px; padding: 25px 0; width: 100%; display: block; border: 2px solid gray; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: all 0.3s; font-weight: bold; }
 header .linkbutton .fa { margin-right: 10px; }
 header .linkbutton:hover { text-decoration: none; background-color: #303030; color: white; border-color: white; }
-header .logo { float: left; margin: 12px 0 10px 20px; width: 150px; }
 
 footer { text-align: center; padding: 20px 0; margin: 50px auto 0; border-top: 1px solid #E0E0E0; font-size: 11px; color: gray; max-width: 500px; }
 footer nav { margin-bottom: 3px; }
@@ -95,7 +94,6 @@ footer > a { color: black; }
 	.postdetail { border: 0; padding: 0; }
 
 	header { border-radius: 0; box-shadow: none; margin: 0; padding: 15px 0 0 0; min-height: 100px; }
-	header .logo { float: none; display: block; width: 150px; }
 	header nav { display: none; float: none; border: 0; margin: 0 0 20px; padding: 0; background-color: white; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border-top: 1px solid #E0E0E0; position: absolute; width: 100%; z-index: 5; }
 	header nav a { display: block; margin: 0; padding: 8px 25px; border-top: 1px solid #E0E0E0; color: black; border-radius: 0; }
 	header nav a:first-child { border-top: 0; }
