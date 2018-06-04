@@ -25,7 +25,7 @@ header nav { margin: 5px 0 0 30px; padding: 18px 0 18px 30px; float: right; }
 header nav a { font-size: 14px; color: black; text-transform: uppercase; font-weight: bold; margin-left: 10px; padding: 5px 7px; display: inline-block; position: relative; font-family: $font; border-radius: 3px; }
 header nav a:first-child { margin-left: 0; }
 header nav a:hover { text-decoration: none; color: #505050; }
-header nav .selected { color: white !important; background-color: #78AE4E; }
+header nav .selected { color: white !important; background-color: #a00; border: 1px solid #D4AF37; }
 header nav .fa { margin-right: 8px; }
 
 header .linkbutton { border-radius: 100px; color: #D0D0D0; font-size: 20px; padding: 25px 0; width: 100%; display: block; border: 2px solid gray; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: all 0.3s; font-weight: bold; }
@@ -109,4 +109,3 @@ footer > a { color: black; }
 
 	.mainmenubutton { display: block; }
 }
-
