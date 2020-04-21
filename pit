@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd ../colbygk.github.io
+git status
+git commit -m "publish" .
+git push
