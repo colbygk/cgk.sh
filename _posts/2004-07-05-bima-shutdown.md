@@ -1,7 +1,7 @@
 ---
 title: 'BIMA Dish'
-date: 2006-06-19 13:45:00
-featured_image: '/images/hcro/antenna6.jpg'
+date: 2004-07-05 13:45:00
+thumb: '/images/hcro/antenna6-thumb.jpg'
 excerpt: Last day of operations for BIMA at HCRO.
 ---
 
@@ -11,5 +11,5 @@ excerpt: Last day of operations for BIMA at HCRO.
 
 [flickr.com/photos/cgk](https://www.flickr.com/photos/cgk/2452722119/sizes/l/)
 
-The day we shut down the BIMA antennas at Hat Creek Radio Observatory
+The day we shut down the [BIMA](https://en.wikipedia.org/wiki/Berkeley-Illinois-Maryland_Association) antennas at Hat Creek Radio Observatory
 

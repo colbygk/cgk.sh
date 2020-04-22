@@ -1,7 +1,7 @@
 ---
 title: 'Chromoscope'
 date: 2009-12-09 12:00:00
-featured_image: '/images/astronomy/chromoscope.png'
+thumb: '/images/astronomy/chromoscope-thumb.png'
 excerpt: multi-spectral views of the sky
 ---
 
