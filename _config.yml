@@ -1,7 +1,14 @@
-site: Journal Jekyll Theme
+site: cgk.sh
 
 url: 
 baseurl: 
+
+exclude:
+  - pit
+  - bit
+  - sit
+  - Dockerfile
+  - Gemfile*
 
 collections:
   pages:

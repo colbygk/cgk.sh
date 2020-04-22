@@ -1,6 +1,6 @@
 basic_settings:
-  site_title: Journal
-  site_tagline: A stunning personal blog Jekyll theme with an image-focused design.
+  site_title: cgk.sh
+  site_tagline: Colby Gutierrez-Kraybill
   favicon_image: /images/favicon.png
 
 header_settings:

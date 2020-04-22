@@ -2,5 +2,6 @@
 
 cd ../colbygk.github.io
 git status
+git add .
 git commit -m "publish" .
 git push
