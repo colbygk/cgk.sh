@@ -1,3 +1,5 @@
 tmp/*
 logs/*
 databases/*
+.sass-cache/*
+_site/*
