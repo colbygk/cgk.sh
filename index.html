@@ -1,42 +1,43 @@
 ---
 layout: default
 title: Colby Gutierrez-Kraybill
-description: 
+description:
 featured_image: /images/hcro/DXleaves.jpg
 ---
 
 <section class="blog single">
 
-	<div class="wrap">
+  <div class="wrap">
+    {% for post in paginator.posts %}
+      {% assign odd = forloop.index | modulo: 2  %}
+      {% assign rightside = "" %}
+      {% if odd == 0 %}
+        {% assign rightside = "_right" %}
+      {% endif %}
 
-		{% for post in paginator.posts %}
+      <article class="blog-post">
 
-		<article class="blog-post">
+        <div class="blog-post__header{{ rightside }}">
+          <h2 class="blog-post__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p class="blog-post__subtitle">{{ post.date | date_to_long_string }}</p>
+        </div>
 
-			<div class="blog-post__header">
-				<h2 class="blog-post__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-				<p class="blog-post__subtitle">{{ post.date | date_to_long_string }}</p>
-			</div>
+        {% if post.featured_image %}
+          <a href="{{ post.url | relative_url }}" class="blog-post__image" style="background-image: url({{ post.featured_image | relative_url }});"></a>
+        {% endif %}
 
-			{% if post.featured_image %}
-			<a href="{{ post.url | relative_url }}" class="blog-post__image" style="background-image: url({{ post.featured_image | relative_url }});"></a>
-			{% endif %}
-
-			{% if post.thumb %}
-			<a href="{{ post.url | relative_url }}" class="blog-post__thumb" style="background-image: url({{ post.thumb | relative_url }});"></a>
-			{% endif %}
+      {% if post.thumb %}
+      <a href="{{ post.url | relative_url }}" class="blog-post__thumb" style="background-image: url({{ post.thumb | relative_url }});"></a>
+      {% endif %}
 
 
-			<div class="blog-post__content">
-				<p>{{ post.excerpt }}</p>
-				<p><a href="{{ post.url | relative_url }}" class="button">Read More</a>
-			</div>
+        <div class="blog-post__content{{ rightside }}">
+          <p>{{ post.excerpt }}</p>
+    </article>
 
-		</article>
+    {% endfor %}
 
-		{% endfor %}
-
-	</div>
+  </div>
 
 </section>
 
@@ -44,16 +45,16 @@ featured_image: /images/hcro/DXleaves.jpg
 
 <section class="pagination">
 
-	{% if paginator.previous_page %}
-	<div class="pagination__prev">
-		<a href="{{ paginator.previous_page_path | relative_url }}" class="button button--large"><i class="fa fa-angle-left" aria-hidden="true"></i> <span>Newer Posts</span></a>
-	</div>
-	{% endif %}
-	{% if paginator.next_page %}
-	<div class="pagination__next">
-		<a href="{{ paginator.next_page_path | relative_url }}" class="button button--large"><span>Older Posts</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-	</div>
-	{% endif %}
+  {% if paginator.previous_page %}
+  <div class="pagination__prev">
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="button button--large"><i class="fa fa-angle-left" aria-hidden="true"></i> <span>Newer Posts</span></a>
+  </div>
+  {% endif %}
+  {% if paginator.next_page %}
+  <div class="pagination__next">
+    <a href="{{ paginator.next_page_path | relative_url }}" class="button button--large"><span>Older Posts</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+  </div>
+  {% endif %}
 
 </section>
 

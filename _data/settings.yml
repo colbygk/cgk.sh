@@ -4,7 +4,7 @@ basic_settings:
   favicon_image: /images/favicon.png
 
 header_settings:
-  logo_image: 
+  logo_image:
   logo_width: 200
   overlay_opacity: 0.7
 
@@ -81,9 +81,9 @@ font_settings:
     weight: 400
     letter_spacing: 0
   site_tagline:
-    small_size: 16
-    medium_size: 17
-    large_size: 18
+    small_size: 14
+    medium_size: 15
+    large_size: 16
     weight: 400
     letter_spacing: 0
     line_height: 1.5
@@ -94,23 +94,23 @@ font_settings:
     weight: 400
     letter_spacing: 0
   h1:
-    small_size: 25
-    medium_size: 35
-    large_size: 45
+    small_size: 15
+    medium_size: 25
+    large_size: 25
     weight: 400
     letter_spacing: -0.02
     line_height: 1.2
   h2:
-    small_size: 25
-    medium_size: 35
-    large_size: 45
+    small_size: 20
+    medium_size: 25
+    large_size: 30
     weight: 400
     letter_spacing: -0.02
     line_height: 1.2
   h3:
-    small_size: 22
-    medium_size: 25
-    large_size: 30
+    small_size: 20
+    medium_size: 22
+    large_size: 25
     weight: 400
     letter_spacing: -0.02
     line_height: 1.3
