@@ -1,6 +1,6 @@
 basic_settings:
   site_title: cgk.sh
-  site_tagline: Colby Gutierrez-Kraybill
+  site_tagline: colby gutierrez-kraybill
   favicon_image: /images/favicon.png
 
 header_settings:
@@ -69,28 +69,47 @@ color_settings:
   error_color: '#D64541'
 
 font_settings:
-  font_embed: '<link href="https://fonts.googleapis.com/css?family=Merriweather:300,400|Muli:400,400i,600" rel="stylesheet">'
-  title_font: '"Merriweather", sans-serif'
-  body_font: '"Muli", sans-serif'
+  font_embed:
+    - '<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">'
+    - <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">
+  title_font: '"Josefin Sans", sans-serif'
+  body_font: '"Baloo Bhaina 2", cursive;'
+  tagline_font: '"Josefin Sans", sans-serif'
+  menu_font: '"Baloo Bhaina 2", cursive;'
+  blog_title_font: '"Josefin Sans", sans-serif'
+  blog_subtitle_font: '"Baloo Bhaina 2", cursive;'
+  blog_extra_font: '"Baloo Bhaina 2", cursive;'
   regular_weight: 400
   bold_weight: 600
+  blog_title:
+    small_size: 50
+    medium_size: 60
+    large_size: 70
+    weight: 100
+    letter_spacing: 0
+  blog_subtitle:
+    small_size: 50
+    medium_size: 60
+    large_size: 70
+    weight: 100
+    letter_spacing: 0
   site_title:
-    small_size: 25
-    medium_size: 30
-    large_size: 35
-    weight: 400
+    small_size: 50
+    medium_size: 60
+    large_size: 70
+    weight: 100
     letter_spacing: 0
   site_tagline:
-    small_size: 14
+    small_size: 13
     medium_size: 15
-    large_size: 16
-    weight: 400
+    large_size: 18
+    weight: 100
     letter_spacing: 0
     line_height: 1.5
   menu:
-    small_size: 30
-    medium_size: 17
-    large_size: 18
+    small_size: 20
+    medium_size: 25
+    large_size: 30
     weight: 400
     letter_spacing: 0
   h1:

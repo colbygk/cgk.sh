@@ -127,7 +127,7 @@
 
 .header__tagline {
   margin-top: 10px;
-  font-family: $body-font;
+  font-family: $tagline-font;
   font-size: $sitetagline-small;
   font-weight: $sitetagline-weight;
   letter-spacing: $sitetagline-spacing;
@@ -151,10 +151,14 @@
 
   @include mq(tabletl) {
     margin-top: 20px;
+    font-family: $menu_font;
+    font-size: $menu-medium;
   }
 
   @include mq(laptop) {
     margin-top: 30px;
+    font-family: $menu_font;
+    font-size: $menu-large;
   }
 }
 
@@ -253,15 +257,18 @@
 }
 
 .menu__list {
+  font-family: $menu-font;
   list-style: none;
   margin: 0 auto;
   padding: 12px 20px;
 
   @include mq(tabletp) {
-    padding: 30px 40px;
+    padding: 0;
+    font-size: $menu-medium;
   }
 
   @include mq(tabletl) {
+    font-size: $menu-large;
     margin: 0;
     padding: 0;
   }

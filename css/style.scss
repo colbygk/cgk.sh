@@ -34,7 +34,10 @@ $error-color: {{ site.data.settings.color_settings.error_color }};
 
 $body-font: {{ site.data.settings.font_settings.body_font }};
 $title-font: {{ site.data.settings.font_settings.title_font }};
-
+$blog-title-font: {{ site.data.settings.font_settings.blog_title_font }};
+$blog-subtitle-font: {{ site.data.settings.font_settings.blog_subtitle_font }};
+$tagline-font: {{ site.data.settings.font_settings.tagline_font }};
+$menu-font: {{ site.data.settings.font_settings.menu_font }};
 $regular-weight: {{ site.data.settings.font_settings.regular_weight }};
 $bold-weight: {{ site.data.settings.font_settings.bold_weight }};
 
@@ -59,6 +62,18 @@ $menu-medium: {{ site.data.settings.font_settings.menu.medium_size }}px;
 $menu-large: {{ site.data.settings.font_settings.menu.large_size }}px;
 $menu-weight: {{ site.data.settings.font_settings.menu.weight }};
 $menu-spacing: {{ site.data.settings.font_settings.menu.letter_spacing }}em;
+
+$blogtitle-small: {{ site.data.settings.font_settings.blog_title.small_size }}px;
+$blogtitle-medium: {{ site.data.settings.font_settings.blog_title.medium_size }}px;
+$blogtitle-large: {{ site.data.settings.font_settings.blog_title.large_size }}px;
+$blogtitle-weight: {{ site.data.settings.font_settings.blog_title.weight }};
+$blogtitle-spacing: {{ site.data.settings.font_settings.blog_title.letter_spacing }}em;
+
+$blogsubtitle-small: {{ site.data.settings.font_settings.blog_subtitle.small_size }}px;
+$blogsubtitle-medium: {{ site.data.settings.font_settings.blog_subtitle.medium_size }}px;
+$blogsubtitle-large: {{ site.data.settings.font_settings.blog_subtitle.large_size }}px;
+$blogsubtitle-weight: {{ site.data.settings.font_settings.blog_subtitle.weight }};
+$blogsubtitle-spacing: {{ site.data.settings.font_settings.blog_subtitle.letter_spacing }}em;
 
 $h1-small: {{ site.data.settings.font_settings.h1.small_size }}px;
 $h1-medium: {{ site.data.settings.font_settings.h1.medium_size }}px;
@@ -153,5 +168,3 @@ $grid-spacing: {{ site.data.settings.grid_settings.grid_spacing }}px;
 
 @import "_includes/_portfolio";
 @import "_includes/_blog";
-
-
