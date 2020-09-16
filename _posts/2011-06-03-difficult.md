@@ -3,6 +3,7 @@ title: 'the difficult lesson'
 date: 2011-06-03 10:00:00
 thumb: '/images/art/difficult_lesson_thumb.png'
 excerpt: william-adolphe bouguereau
+thumbcolor: white
 ---
 
 <div class="gallery" data-columns="1">

@@ -3,6 +3,7 @@ title: 'BIMA Dish'
 date: 2004-07-05 13:45:00
 thumb: '/images/hcro/antenna6-thumb.jpg'
 excerpt: Last day of operations for BIMA at HCRO.
+thumbcolor: white
 ---
 
 <div class="gallery" data-columns="1">

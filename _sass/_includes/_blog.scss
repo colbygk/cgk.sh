@@ -22,18 +22,26 @@
 }
 
 .blog-post {
-  margin-top: 40px;
+  margin-top: 30px;
+
+  @include mq(phonel) {
+    margin-top: 10px;
+  }
 
   @include mq(tabletp) {
-    margin-top: 00px;
+    margin-top: 10px;
   }
 
   @include mq(tabletl) {
-    margin-top: 00px;
+    margin-top: 10px;
   }
 
   @include mq(laptop) {
-    margin-top: 00px;
+    margin-top: 10px;
+  }
+
+  @include mq(desktop) {
+    margin-top: 10px;
   }
 
   &:first-child {
@@ -64,7 +72,16 @@
   }
 }
 
+.blog-post__header {
+  padding-top: 0.25em;
+  padding-left: 0.5em;
+  backdrop-filter: blur(10px) contrast(0.1) opacity(0.5);
+}
+
 .blog-post__header_right {
+  padding-top: 0.25em;
+  padding-right: 0.5em;
+  backdrop-filter: blur(10px) contrast(0.1) opacity(0.5);
   text-align: right;
 }
 

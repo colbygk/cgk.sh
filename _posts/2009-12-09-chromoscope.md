@@ -3,6 +3,7 @@ title: 'Chromoscope'
 date: 2009-12-09 12:00:00
 thumb: '/images/astronomy/chromoscope-thumb.png'
 excerpt: multi-spectral views of the sky
+thumbcolor: white
 ---
 
 <div class="gallery" data-columns="2">

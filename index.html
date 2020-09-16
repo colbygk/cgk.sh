@@ -16,23 +16,24 @@ featured_image: /images/hcro/DXleaves.jpg
       {% endif %}
 
       <article class="blog-post">
-
+<!--
         <div class="blog-post__header{{ rightside }}">
           <h2 class="blog-post__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
           <p class="blog-post__subtitle">{{ post.date | date_to_long_string }}</p>
         </div>
-
-        {% if post.featured_image %}
-          <a href="{{ post.url | relative_url }}" class="blog-post__image" style="background-image: url({{ post.featured_image | relative_url }});"></a>
-        {% endif %}
+-->
 
       {% if post.thumb %}
-      <a href="{{ post.url | relative_url }}" class="blog-post__thumb" style="background-image: url({{ post.thumb | relative_url }});"></a>
+      <a href="{{ post.url | relative_url }}" class="blog-post__thumb" style="background-image: url({{ post.thumb | relative_url }});">
+        <div class="blog-post__header{{ rightside }}">
+          <h2 style="margin: 0px; color: {{post.thumbcolor | default: white}};">{{ post.title }}</h2>
+          <p style="margin: 0px; color: {{post.thumbcolor | default: white}};" class="blog-post__subtitle">{{ post.date | date_to_long_string }}</p>
+        </div>
+      </a>
+      <p\>
       {% endif %}
 
 
-        <div class="blog-post__content{{ rightside }}">
-          <p>{{ post.excerpt }}</p>
     </article>
 
     {% endfor %}
