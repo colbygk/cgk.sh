@@ -72,7 +72,7 @@ font_settings:
   font_embed:
     - '<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300&display=swap" rel="stylesheet">'
     - '<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">'
-  title_font: '"Josefin Sans", sans-serif'
+  title_font: '"Baloo Bhaina 2", cursive;'
   body_font: '"Baloo Bhaina 2", cursive;'
   tagline_font: '"Baloo Bhaina 2", cursive;'
   menu_font: '"Baloo Bhaina 2", cursive;'

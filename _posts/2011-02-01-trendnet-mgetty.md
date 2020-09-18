@@ -3,7 +3,7 @@ title: 'setting up mgetty to dialout and send an audio message under linux'
 date: 2011-02-01 10:00:00
 thumb: '/images/tech/trendnet_thumb.jpg'
 excerpt: using a TRENDnet USB modem
-thumbcolor: white
+thumbcolor: black
 ---
 
 <img src="/images/tech/trendnet.jpg"/>
