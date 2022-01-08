@@ -19,6 +19,8 @@ $background-color: {{ site.data.settings.color_settings.background_color }};
 $background-alt-color: {{ site.data.settings.color_settings.background_alt_color }};
 $border-color: {{ site.data.settings.color_settings.border_color }};
 
+$highlight_color: {{ site.data.settings.color_settings.highlight_color }};
+$inline-code-color: {{ site.data.settings.color_settings.inline_code_color }};
 $text-dark-color: {{ site.data.settings.color_settings.text_dark_color }};
 $text-medium-color: {{ site.data.settings.color_settings.text_medium_color }};
 $text-light-color: {{ site.data.settings.color_settings.text_light_color }};

@@ -6,7 +6,7 @@ excerpt: using a TRENDnet USB modem
 thumbcolor: black
 ---
 
-<img src="/images/tech/trendnet.jpg"/>
+<img style="float: left; margin: 30px;" src="/images/tech/trendnet.jpg"/>
 
 Hardware used:
 <a href="http://www.amazon.com/TRENDnet-Phone-Internet-Modem-TFM-561U/dp/B004BU8O9Y/ref=sr_1_2?ie=UTF8&qid=1296627755&sr=8-2">TRENDnet 56K USB 2.0 Phone, Internet, and Fax Modem TFM-561U (White)</a>
@@ -15,7 +15,7 @@ Under openSUSE 11.3, this modem is immediately detected when plugged into a USB 
 
 The TRENDNet modem will respond with a device id of 56000 given the command ATI. mgetty that ships with openSUSE 11.3 will incorrectly detect this modem as a Rockwell and proceed to issue commands that the TRENDNet modem does not understand for voice modes.
 
-Example errors that show up in ``/var/log/vm.log`
+Example errors that show up in `/var/log/vm.log`
 
 {% highlight shell %}
 ...
