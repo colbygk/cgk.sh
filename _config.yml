@@ -9,6 +9,7 @@ exclude:
   - sit
   - Dockerfile
   - Gemfile*
+  - old-shrewdraven
 
 collections:
   pages:

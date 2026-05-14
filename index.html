@@ -31,6 +31,14 @@ featured_image: /images/hcro/DXleaves.jpg
         </div>
       </a>
       <p\>
+      {% else %}
+        <div class="blog-post__header{{ rightside }}">
+          <h2 class="blog-post__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p class="blog-post__subtitle">{{ post.date | date_to_long_string }}</p>
+          {% if post.excerpt %}
+          <p class="blog-post__excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 240 }}</p>
+          {% endif %}
+        </div>
       {% endif %}
 
 
