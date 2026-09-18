@@ -314,7 +314,7 @@ hr {
 }
 
 .page {
-  @include transition(all 0.4s ease-in-out);
+  @include transition(all 0.15s ease-in-out);
 }
 
 body.loading {
@@ -322,19 +322,19 @@ body.loading {
   .loader {
     opacity: 1;
     visibility: visible;
-    @include transition(all 0.4s ease-in-out 1s);
+    @include transition(all 0.15s ease-in-out 1s);
   }
 
   .page {
     opacity: 0;
     visibility: hidden;
-    @include transition(all 0.4s ease-in-out);
+    @include transition(all 0.15s ease-in-out);
   }
 
   .footer {
     opacity: 0;
     visibility: hidden;
-    @include transition(all 0.4s ease-in-out);
+    @include transition(all 0.15s ease-in-out);
   }
 }
 

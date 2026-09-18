@@ -43,7 +43,7 @@
 		$('.page-loader').load( state.hash + ' .page__content', function() {
 
 			// Find transition time
-			var transitionTime = 400;
+			var transitionTime = 150;
 
 			// After current content fades out
 			setTimeout( function() {

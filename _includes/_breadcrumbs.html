@@ -1,11 +1,32 @@
-<div id="breadcrumbs">
-{% assign crumbs = page.url | remove:'/index.html' | split: '/' %}
-<a href="/">Home</a>
-{% for crumb in crumbs offset: 1 %}
-  {% if forloop.last %}
-    / {{ page.title }}
-  {% else %}
-    / <a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' | replace:'without-plugin/','without-plugins/' }}{% endfor %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
-  {% endif %}
-{% endfor %}
-</div>
+{% comment %}
+  Breadcrumb trail. Hidden on the home page (page.url == "/").
+  Builds crumbs from the URL path; the final crumb is the page title
+  (or "Page N" for paginated listings like /blog/page2/).
+{% endcomment %}
+{% unless page.url == "/" %}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  {% assign raw = page.url | remove:'/index.html' %}
+  {% assign crumbs = raw | split: '/' %}
+  <a href="/">Home</a>
+  {% assign acc = "" %}
+  {% for crumb in crumbs offset: 1 %}
+    {% if crumb == "" %}{% continue %}{% endif %}
+    {% assign acc = acc | append: '/' | append: crumb %}
+    {% if forloop.last %}
+      {% assign page_match = crumb | slice: 0, 4 %}
+      <span class="breadcrumbs__sep">/</span>
+      {% if page_match == "page" %}
+        {% assign num = crumb | remove: 'page' %}
+        <span class="breadcrumbs__current">Page {{ num }}</span>
+      {% elsif page.title %}
+        <span class="breadcrumbs__current">{{ page.title }}</span>
+      {% else %}
+        <span class="breadcrumbs__current">{{ crumb | replace:'-',' ' | capitalize }}</span>
+      {% endif %}
+    {% else %}
+      <span class="breadcrumbs__sep">/</span>
+      <a href="{{ acc | append: '/' }}">{{ crumb | replace:'-',' ' | capitalize }}</a>
+    {% endif %}
+  {% endfor %}
+</nav>
+{% endunless %}

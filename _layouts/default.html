@@ -74,6 +74,8 @@
 
 		<div class="page__content" data-page-title="{% if page.url == "/" %}{{ site.data.settings.basic_settings.site_title }} – {{ page.title }}{% else %}{{ page.title }} – {{ site.data.settings.basic_settings.site_title }}{% endif %}" data-image="{{ page.featured_image | relative_url }}">
 
+			{% include _breadcrumbs.html %}
+
 			{{ content }}
 
 		</div>

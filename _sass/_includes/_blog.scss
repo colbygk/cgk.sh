@@ -159,19 +159,45 @@
 }
 
 .pagination {
-  margin-top: 0;
-  padding: 40px 20px 0;
+  margin-top: 20px;
+  padding: 10px 20px 0;
+  overflow: hidden;
 
   @include mq(tabletp) {
-    padding: 55px 40px 0;
+    padding: 10px 40px 0;
   }
 
   @include mq(tabletl) {
-    padding: 75px 40px 0;
+    padding: 10px 40px 0;
   }
 
   @include mq(laptop) {
-    padding: 93px 60px 0;
+    padding: 10px 60px 0;
+  }
+}
+
+// Top-of-list pagination – keep it tight against the header so it's
+// visible without scrolling, but still inside the right column on tabletl+.
+.pagination--top {
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 4px;
+
+  @include mq(tabletp) {
+    margin-top: 14px;
+  }
+
+  @include mq(tabletl) {
+    margin-top: 20px;
+  }
+
+  @include mq(laptop) {
+    margin-top: 24px;
+  }
+
+  .button {
+    padding: 8px 14px;
+    font-size: 12px;
   }
 }
 

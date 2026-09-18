@@ -1,0 +1,47 @@
+// - - - - - - - - - - - - - - - - - -
+// Breadcrumbs
+// - - - - - - - - - - - - - - - - - -
+
+.breadcrumbs {
+  display: block;
+  width: 100%;
+  padding: 8px 20px 0;
+  text-align: right;
+  font-family: $blog-subtitle-font;
+  font-size: 12px;
+  line-height: 1.4;
+  color: $text-light-color;
+
+  @include mq(tabletp) {
+    padding: 10px 40px 0;
+    font-size: 13px;
+  }
+
+  @include mq(tabletl) {
+    padding: 12px 40px 0;
+  }
+
+  @include mq(laptop) {
+    padding: 16px 60px 0;
+    font-size: 14px;
+  }
+
+  a {
+    color: $text-light-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .breadcrumbs__sep {
+    margin: 0 4px;
+    color: $text-light-color;
+    opacity: 0.6;
+  }
+
+  .breadcrumbs__current {
+    color: $text-medium-color;
+  }
+}

@@ -5,6 +5,23 @@ description:
 featured_image: /images/hcro/DXleaves.jpg
 ---
 
+{% if paginator.total_pages > 1 %}
+<section class="pagination pagination--top">
+
+  {% if paginator.previous_page %}
+  <div class="pagination__prev">
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="button"><i class="fa fa-angle-left" aria-hidden="true"></i> <span>Newer Posts</span></a>
+  </div>
+  {% endif %}
+  {% if paginator.next_page %}
+  <div class="pagination__next">
+    <a href="{{ paginator.next_page_path | relative_url }}" class="button"><span>Older Posts</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+  </div>
+  {% endif %}
+
+</section>
+{% endif %}
+
 <section class="blog single">
 
   <div class="wrap">
