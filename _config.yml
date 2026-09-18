@@ -10,6 +10,9 @@ exclude:
   - Dockerfile
   - Gemfile*
   - old-shrewdraven
+  - README.md
+  - CLAUDE.md
+  - RESUME
 
 collections:
   pages:
@@ -21,6 +24,9 @@ collections:
   projects:
     output: true
     permalink: /project/:slug
+  watches:
+    output: true
+    permalink: /horology/:name/
 
 defaults:
   -
@@ -46,6 +52,12 @@ defaults:
       type: "projects"
     values:
       layout: "project"
+  -
+    scope:
+      path: ""
+      type: "watches"
+    values:
+      layout: "watch"
 
 markdown: kramdown
 

@@ -1,0 +1,45 @@
+---
+layout: default
+title: Horology
+subtitle: Watches inherited and acquired — their stories, their movements, their care.
+description: A small collection of wristwatches, some inherited and some chosen.
+---
+
+<section class="intro">
+
+  <div class="wrap">
+
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.subtitle }}</p>
+
+  </div>
+
+</section>
+
+<section class="horology">
+
+  <div class="wrap">
+
+    {% assign watches = site.watches | sort: 'sort_year', 'last' %}
+
+    {% if watches.size == 0 %}
+    <p class="horology__empty">The collection is still being catalogued.</p>
+    {% else %}
+    <ul class="watch-grid">
+      {% for watch in watches %}
+      <li class="watch-card">
+        <a class="watch-card__link" href="{{ watch.url | relative_url }}">
+          <div class="watch-card__image{% unless watch.thumb %} watch-card__image--empty{% endunless %}"{% if watch.thumb %} style="background-image: url({{ watch.thumb | relative_url }});"{% endif %}></div>
+          <div class="watch-card__caption">
+            <h2 class="watch-card__title">{{ watch.title }}</h2>
+            <p class="watch-card__meta">{{ watch.brand }}{% if watch.brand and watch.year_label %} · {% endif %}{{ watch.year_label }}</p>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </div>
+
+</section>

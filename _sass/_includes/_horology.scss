@@ -1,0 +1,200 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Horology (collection index + watch pages)
+
+// - - - - - - - - - - - - - - - - - -
+
+$watch-spacing: $grid-spacing * 2;
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Index
+
+.horology {
+  padding: 20px 0 60px;
+
+  @include mq(tabletp) {
+    padding: 35px 0 80px;
+  }
+
+  @include mq(tabletl) {
+    padding: 35px 40px 80px;
+  }
+
+  @include mq(laptop) {
+    padding: 53px 60px 100px;
+  }
+}
+
+.horology__empty {
+  color: $text-light-color;
+}
+
+.watch-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $watch-spacing;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include mq(phonel) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mq(desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.watch-card__link {
+  display: block;
+  color: inherit;
+
+  &:hover {
+    .watch-card__image {
+      transform: scale(1.03);
+    }
+
+    .watch-card__title {
+      color: $text-dark-color;
+    }
+  }
+}
+
+.watch-card__image {
+  position: relative;
+  padding-bottom: 100%;
+  background-color: $overlay-background-color;
+  background-size: cover;
+  background-position: center;
+  @include transition(transform 0.3s ease-in-out);
+}
+
+// A quiet dial outline when a watch has no photo yet.
+.watch-card__image--empty::after {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 40%;
+  height: 40%;
+  border: 1px solid rgba($overlay-text-color, 0.3);
+  border-radius: 50%;
+}
+
+.watch-card__caption {
+  padding-top: 10px;
+}
+
+.watch-card__title {
+  margin: 0;
+  font-size: $h3-small;
+  color: $text-medium-color;
+  @include transition(color 0.2s ease-in-out);
+}
+
+.watch-card__meta {
+  margin: 0;
+  color: $text-light-color;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Watch page
+
+.watch__specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 0 $watch-spacing;
+  margin: 0 0 40px;
+  padding: 0;
+  border-top: 1px solid $border-color;
+}
+
+.watch__spec {
+  padding: 10px 0;
+  border-bottom: 1px solid $border-color;
+
+  dt {
+    font-size: 0.8em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-light-color;
+  }
+
+  dd {
+    margin: 2px 0 0;
+    color: $text-medium-color;
+  }
+}
+
+.watch__story {
+  margin-bottom: 40px;
+}
+
+.watch__heading {
+  margin-top: 60px;
+}
+
+.watch__timeline {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.watch__service {
+  position: relative;
+  margin: 0 0 40px;
+  padding-left: 24px;
+  border-left: 2px solid $accent-color;
+
+  p {
+    margin: 0 0 10px;
+  }
+}
+
+.watch__service-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: $text-light-color;
+
+  > * {
+    margin-right: 12px;
+  }
+}
+
+.watch__service-date {
+  color: $text-dark-color;
+}
+
+.watch__badge {
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 0.8em;
+  background: $accent-color;
+  color: $overlay-background-color;
+}
+
+.watch__before-after {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: $watch-spacing;
+
+  @include mq(tabletp) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  h4 {
+    margin: 0 0 5px;
+    font-size: 0.8em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $text-light-color;
+  }
+
+  .gallery {
+    margin: 0;
+  }
+}
+
+.watch__back {
+  margin-top: 60px;
+}

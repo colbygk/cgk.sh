@@ -1,0 +1,7 @@
+{% comment %}
+  Photo grid for horology pages, using the theme's gallery (masonry + zoom).
+  Params: photos (array of {src, caption}), columns (2–6; 1 would make a carousel).
+{% endcomment %}
+<div class="gallery" data-columns="{{ include.columns | default: 3 }}">
+  {% for photo in include.photos %}<img src="{{ photo.src | relative_url }}" alt="{{ photo.caption | default: page.title | escape }}">{% endfor %}
+</div>

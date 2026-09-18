@@ -14,6 +14,8 @@ menu_settings:
       url: '/'
     - title: 'Projects'
       url: '/projects/'
+    - title: 'Horology'
+      url: '/horology/'
     - title: 'About'
       url: '/about'
 #    - title: 'Contact'
