@@ -27,10 +27,6 @@
     {
       "label": "Movement",
       "value": "Manual"
-    },
-    {
-      "label": "Acquired",
-      "value": "Purchased"
     }
   ],
   "photos": [
