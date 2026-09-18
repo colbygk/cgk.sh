@@ -32,7 +32,7 @@ description: A small collection of wristwatches, some inherited and some chosen.
           <div class="watch-card__image{% unless watch.thumb %} watch-card__image--empty{% endunless %}"{% if watch.thumb %} style="background-image: url({{ watch.thumb | relative_url }});"{% endif %}></div>
           <div class="watch-card__caption">
             <h2 class="watch-card__title">{{ watch.title }}</h2>
-            <p class="watch-card__meta">{{ watch.brand }}{% if watch.brand and watch.year_label %} · {% endif %}{{ watch.year_label }}</p>
+            {% if watch.subtitle %}<p class="watch-card__meta">{{ watch.subtitle }}</p>{% endif %}
           </div>
         </a>
       </li>
