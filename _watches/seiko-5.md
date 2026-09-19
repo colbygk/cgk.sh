@@ -3,8 +3,8 @@
   "title": "Seiko 5",
   "brand": "Seiko",
   "model": "5",
-  "featured_image": "/images/horology/seiko-5/p-d80957d4.jpg",
-  "thumb": "/images/horology/seiko-5/p-d80957d4-thumb.jpg",
+  "featured_image": "/images/horology/seiko-5/p-e6c1ce04.jpg",
+  "thumb": "/images/horology/seiko-5/p-e6c1ce04-thumb.jpg",
   "specs": [
     {
       "label": "Brand",
