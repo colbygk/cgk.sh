@@ -17,7 +17,7 @@ The TRENDNet modem will respond with a device id of 56000 given the command ATI.
 
 Example errors that show up in `/var/log/vm.log`
 
-{% highlight shell %}
+{% highlight text %}
 ...
 02/01 21:14:19  reading port ttyACM0 configuration from config file /etc/mgetty+sendfax/voice.conf
 02/01 21:14:19  detecting voice modem type
@@ -48,7 +48,7 @@ Downloaded mgetty source from <a href="http://mgetty.sourcearchive.com/downloads
 
 Modified `mgetty-1.1.36/voice/libvoice/detect.c`:
 
-{% highlight shell %}
+{% highlight c %}
 ...
 /*     {ati, "56000",                NULL,   &Rockwell},*/
      {ati, "56000",                NULL,   &V253modem},
@@ -58,7 +58,7 @@ Note - configuring vgetty to force this setting is possible without modifying th
 
 Built mgetty via:
 
-{% highlight shell %}
+{% highlight text %}
 ~/mgetty-1.1.36/ # cp policy.h-dist policy.h
 ~/mgetty-1.1.36/ # make && make install
 ~/mgetty-1.1.36/ # cd voice
@@ -71,7 +71,7 @@ Format of sound file:
 
 The TRENDNet is picky about the audio file format used. When I had originally thought the TRENDNet was Rockwell based (because mgetty seemed sure that it was) I encoded my test sound file as a Rockwell 4 format (4-bit Rockwell ADPCM), the indication that there was a problem with the sound file was not intuitive with the following error in /var/log/vm.log (note the "Wrong modem type found")
 
-{% highlight shell %}
+{% highlight text %}
 02/01 22:09:35  playing voice file /var/spool/voice/messages/b.rmd
 02/01 22:09:35  can't get group 'phone': Success
 02/01 22:09:35   vm: raw modem data header found
@@ -92,13 +92,13 @@ The TRENDNet is picky about the audio file format used. When I had originally th
 
 Empirically found that the following sound encoding works:
 
-{% highlight shell %}
+{% highlight console %}
 # wavtopvf /tmp/testsound.wav | pvfspeed -s 7200 | pvftormd V253modem 9 > /var/spool/voice/messages/testsound.rmd
 {% endhighlight %}
 
 Now, install Modem::Vgetty from CPAN and find where it installed its example scripts `callme.pl` and use it:
 
-{% highlight shell %}
+{% highlight console %}
 # /usr/local/bin/vm shell -S /usr/bin/perl callme.pl 8675309 /var/spool/voice/messages/testsound.rmd
 {% endhighlight %}
 
