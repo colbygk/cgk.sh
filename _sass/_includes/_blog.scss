@@ -12,6 +12,20 @@
   }
 }
 
+// Baloo's ascent (1185/1000) outweighs its descent (827/1000), so its caps
+// and digits sit ~0.13em above the centre of any box. Pills shift the text
+// down by that much to centre it optically.
+$baloo-optical-shift: 0.12em;
+
+@mixin pill($pad-y, $pad-x) {
+  line-height: 1.2;
+  padding-top: calc(#{$pad-y} + #{$baloo-optical-shift});
+  padding-bottom: calc(#{$pad-y} - #{$baloo-optical-shift});
+  padding-left: $pad-x;
+  padding-right: $pad-x;
+  border-radius: 999px;
+}
+
 .blog {
   margin-top: 0;
   padding: 20px 0 60px;
@@ -54,7 +68,8 @@
   font-size: 15px;
   width: 220px;
   max-width: 100%;
-  padding: 4px 12px;
+  line-height: 1.2;
+  padding: calc(0.3em + #{$baloo-optical-shift}) 12px calc(0.3em - #{$baloo-optical-shift});
   color: $text-medium-color;
   background: $background-alt-color;
   border: 1px solid $border-color;
@@ -70,15 +85,19 @@
   font: inherit;
   font-size: 14px;
   cursor: pointer;
-  padding: 1px 12px;
+  @include pill(0.2em, 12px);
   color: $text-medium-color;
   background: transparent;
   border: 1px solid $border-color;
-  border-radius: 999px;
+
+  &:hover {
+    border-color: $text-dark-color;
+  }
 
   &[aria-pressed="true"] {
-    background: $accent-color;
-    border-color: $accent-color;
+    background: $text-dark-color;
+    border-color: $text-dark-color;
+    color: $background-color;
   }
 }
 
@@ -98,10 +117,9 @@
 .post-nav__year {
   font-size: 14px;
   font-weight: $regular-weight;
-  padding: 1px 9px;
+  @include pill(0.2em, 9px);
   color: $text-medium-color;
   background: $background-alt-color;
-  border-radius: 999px;
   font-variant-numeric: tabular-nums;
 
   small {
@@ -110,7 +128,7 @@
   }
 
   &:hover {
-    background: $accent-color;
+    background: rgba($text-dark-color, 0.1);
     text-decoration: none;
   }
 }
@@ -245,11 +263,10 @@
 }
 
 .post__tag {
-  padding: 0 7px;
+  @include pill(0.15em, 8px);
   white-space: nowrap;
   color: darken($accent-color, 50%);
   background: rgba($accent-color, 0.35);
-  border-radius: 4px;
 }
 
 .post__image {

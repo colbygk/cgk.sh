@@ -56,6 +56,30 @@ class PostListTest < Minitest::Test
     refute File.exist?(File.join(SITE, 'blog/page2/index.html')), 'paginated pages still generated'
   end
 
+  def css
+    @css ||= File.read(File.join(SITE, 'css/style.css'))
+  end
+
+  # The selected layout reads in the site's link blue, not the pale accent.
+  def test_selected_layout_uses_link_color
+    blue = YAML.safe_load(File.read('_data/settings.yml'))['color_settings']['text_dark_color']
+    assert_match(/\.post-nav__layout\[aria-pressed="?true"?\]\{[^}]*background:#{Regexp.escape(blue)}/i, css)
+  end
+
+  # Baloo's glyphs sit high in their line box, so pills pad more on top
+  # than on the bottom to centre the text optically.
+  def test_pills_pad_more_on_top
+    %w[post-nav__layout post-nav__year post__tag].each do |cls|
+      rule = css[/\.#{cls}\{[^}]*\}/].to_s
+      top = rule[/padding-top:calc\(([\d.]+)em/, 1].to_f
+      bottom = rule[/padding-bottom:calc\(([\d.]+)em/, 1].to_f
+      assert_operator top, :>, 0, "#{cls} has no optical padding: #{rule}"
+      assert_match(/padding-top:calc\([\d.]+em \+ [\d.]+em\)/, rule, cls)
+      assert_match(/padding-bottom:calc\([\d.]+em - [\d.]+em\)/, rule, cls)
+      assert_equal top, bottom, cls
+    end
+  end
+
   def test_home_starts_on_default_layout_with_switcher
     default = @settings['layouts'].first['id']
     assert_match(/<div class="posts" id="posts" data-post-layout="#{default}">/, @html)
