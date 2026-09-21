@@ -1,7 +1,6 @@
 {% comment %}
   Breadcrumb trail. Hidden on the home page (page.url == "/").
-  Builds crumbs from the URL path; the final crumb is the page title
-  (or "Page N" for paginated listings like /blog/page2/).
+  Builds crumbs from the URL path; the final crumb is the page title.
 {% endcomment %}
 {% unless page.url == "/" %}
 <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -13,12 +12,8 @@
     {% if crumb == "" %}{% continue %}{% endif %}
     {% assign acc = acc | append: '/' | append: crumb %}
     {% if forloop.last %}
-      {% assign page_match = crumb | slice: 0, 4 %}
       <span class="breadcrumbs__sep">/</span>
-      {% if page_match == "page" %}
-        {% assign num = crumb | remove: 'page' %}
-        <span class="breadcrumbs__current">Page {{ num }}</span>
-      {% elsif page.title %}
+      {% if page.title %}
         <span class="breadcrumbs__current">{{ page.title }}</span>
       {% else %}
         <span class="breadcrumbs__current">{{ crumb | replace:'-',' ' | capitalize }}</span>

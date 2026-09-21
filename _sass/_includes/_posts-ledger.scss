@@ -1,0 +1,61 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Post list – ledger layout: years in a sticky left margin, one row per
+// post split by hairlines, photo posts as a strip under the title.
+
+// - - - - - - - - - - - - - - - - - -
+
+@include post-layout(ledger) {
+
+  .post-year {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0 32px;
+    padding-bottom: 12px;
+
+    @include mq(laptop) {
+      grid-template-columns: 150px minmax(0, 1fr);
+    }
+  }
+
+  .post-year__label {
+    margin: 24px 0 8px;
+    font-size: 36px;
+    line-height: 1.15;
+
+    @include mq(laptop) {
+      position: sticky;
+      top: calc(var(--post-nav-h, 64px) + 20px);
+      align-self: start;
+      margin-top: 12px;
+      font-size: 44px;
+    }
+  }
+
+  .post {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 4px 18px;
+    padding: 14px 0;
+    border-top: 1px solid $border-color;
+
+    &:first-child {
+      border-top: 0;
+    }
+  }
+
+  .post__date {
+    padding-top: 3px;
+  }
+
+  .post__title {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .post__image {
+    grid-column: 2;
+    height: 106px;
+    margin-top: 8px;
+  }
+}

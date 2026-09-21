@@ -24,6 +24,8 @@ $inline-code-color: {{ site.data.settings.color_settings.inline_code_color }};
 $text-dark-color: {{ site.data.settings.color_settings.text_dark_color }};
 $text-medium-color: {{ site.data.settings.color_settings.text_medium_color }};
 $text-light-color: {{ site.data.settings.color_settings.text_light_color }};
+$text-muted-color: {{ site.data.settings.color_settings.text_muted_color }};
+$blog-year-color: {{ site.data.settings.color_settings.blog_year_color }};
 
 $accent-color: {{ site.data.settings.color_settings.accent_color }};
 
@@ -173,3 +175,6 @@ $grid-spacing: {{ site.data.settings.grid_settings.grid_spacing }}px;
 
 @import "_includes/_portfolio";
 @import "_includes/_blog";
+@import "_includes/_posts-ledger";
+@import "_includes/_posts-cards";
+@import "_includes/_posts-index";

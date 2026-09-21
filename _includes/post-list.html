@@ -1,0 +1,30 @@
+{% comment %}
+  The posts themselves, grouped by year. Part of posts.html, which sets
+  posts_by_year.
+{% endcomment %}
+<div class="post-list">
+  {% for year in posts_by_year %}
+  <section class="post-year" id="y-{{ year.name }}">
+    <h2 class="post-year__label">{{ year.name }}<small>{{ year.size }} post{% if year.size != 1 %}s{% endif %}</small></h2>
+    <ol class="post-year__posts">
+      {% for post in year.items %}
+      {% assign tags = post.tags | concat: post.categories | uniq %}
+      {% assign search = tags | join: " " | prepend: " " | prepend: post.title | downcase %}
+      <li class="post{% if post.thumb %} post--image{% endif %}" data-search="{{ search | escape }}">
+        <time class="post__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+        <div class="post__body">
+          <h3 class="post__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          {% assign excerpt = post.excerpt | strip_html | strip_newlines | strip %}
+          {% if excerpt != "" %}<p class="post__excerpt">{{ excerpt | truncate: 170 }}</p>{% endif %}
+          {% if tags.size > 0 %}
+          <p class="post__tags">{% for tag in tags limit: 3 %}<span class="post__tag">{{ tag }}</span>{% endfor %}</p>
+          {% endif %}
+        </div>
+        {% if post.thumb %}<span class="post__image" style="background-image: url({{ post.thumb | relative_url }})" aria-hidden="true"></span>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endfor %}
+  <p class="post-list__empty" id="post-empty" hidden>No posts match that filter.</p>
+</div>

@@ -1,0 +1,14 @@
+{% comment %}
+  Every post, grouped by year, with its nav bar. One markup for all
+  layouts: each layout is a stylesheet keyed on the wrapper's
+  data-post-layout (_sass/_includes/_posts-*.scss). Pass `layout=` to pin
+  one layout and drop the switcher; otherwise the list starts on the first
+  layout in settings and js/blog.js applies the visitor's saved choice.
+{% endcomment %}
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% assign posts_pinned = include.layout %}
+{% assign posts_layout = include.layout | default: site.data.settings.post_list.layouts.first.id %}
+<div class="posts" id="posts" data-post-layout="{{ posts_layout }}"{% if posts_pinned %} data-post-layout-pinned{% endif %}>
+  {% include post-nav.html %}
+  {% include post-list.html %}
+</div>

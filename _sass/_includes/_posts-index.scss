@@ -1,0 +1,118 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Post list – index layout: a dense table of contents with dotted leaders
+// to the date, the newest post featured on top, and the posts-per-year
+// histogram as the jump bar.
+
+// - - - - - - - - - - - - - - - - - -
+
+@include post-layout(index) {
+
+  .post-nav__years {
+    display: none;
+  }
+
+  .post-hist {
+    display: flex;
+  }
+
+  .post-list {
+    @include mq(desktop) {
+      columns: 2;
+      column-gap: 56px;
+    }
+  }
+
+  .post-year {
+    break-inside: avoid;
+  }
+
+  .post-year__label {
+    margin: 22px 0 4px;
+    font-size: 26px;
+
+    small {
+      display: none;
+    }
+  }
+
+  .post {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 5px 0;
+
+    // Dotted leader between the title and the date.
+    &::after {
+      content: "";
+      order: 2;
+      flex: 1 1 24px;
+      border-bottom: 1px dotted $text-light-color;
+      transform: translateY(-4px);
+    }
+  }
+
+  .post__body {
+    order: 1;
+    min-width: 0;
+  }
+
+  .post__date {
+    order: 3;
+    flex: none;
+    font-size: 13px;
+  }
+
+  .post__title {
+    font-size: 17px;
+    line-height: 1.3;
+  }
+
+  .post__excerpt,
+  .post__tags {
+    display: none;
+  }
+
+  // Photo posts get a small swatch of their image before the title.
+  .post__image {
+    order: 0;
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+
+  // The newest post, featured.
+  .post-year:first-child .post:first-child {
+    display: grid;
+    gap: 6px;
+    padding: 8px 0 24px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid $text-medium-color;
+
+    &::after {
+      content: none;
+    }
+
+    .post__date {
+      order: 0;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .post__title {
+      font-size: 36px;
+      line-height: 1.1;
+    }
+
+    .post__excerpt {
+      display: block;
+      font-size: 17px;
+    }
+
+    .post__image {
+      display: none;
+    }
+  }
+}

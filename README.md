@@ -77,3 +77,27 @@ grep -A1 "^  <fid>:" _data/webfm.yml
 tool in `/Volumes/data02/personal/horology` (`node bin/horology.js
 publish`). Don't hand-edit them; the layout is `_layouts/watch.html`, the
 index is `horology/index.html`, styles are `_sass/_includes/_horology.scss`.
+
+## Post list (`/` and `/blog/`)
+
+Every post is listed on one page, grouped by year, via
+`_includes/posts.html`. The same markup has several layouts, each a
+stylesheet in `_sass/_includes/_posts-<id>.scss` keyed on
+`.posts[data-post-layout="<id>"]`. The layouts are listed in
+`_data/settings.yml` under `post_list.layouts`; the first is the default.
+Visitors switch layouts on the home page and `js/blog.js` remembers their
+choice. `/blog/` pins the index layout with `{% include posts.html
+layout="index" %}`.
+
+To add a layout: add it to `post_list.layouts`, write its
+`_posts-<id>.scss` wrapped in `@include post-layout(<id>) { … }`, and
+import it from `css/style.scss`.
+
+`_plugins/duplicate_posts.rb` fails the build if two posts share a title.
+
+## Tests
+
+```sh
+docker exec cgkyll-dev sh -c \
+  'jekyll build -d /tmp/verify && SITE=/tmp/verify ruby test/post_list_test.rb'
+```

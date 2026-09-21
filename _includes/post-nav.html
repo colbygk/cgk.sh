@@ -1,0 +1,42 @@
+{% comment %}
+  Sticky bar above the post list: filter, layout switcher, year links and
+  a posts-per-year histogram (shown by the index layout). Part of
+  posts.html, which sets posts_by_year and posts_pinned.
+{% endcomment %}
+{% assign layouts = site.data.settings.post_list.layouts %}
+<nav class="post-nav" aria-label="Posts">
+  <input class="post-nav__filter" id="post-filter" type="search" placeholder="Filter by title or tag" aria-label="Filter posts">
+
+  {% unless posts_pinned %}
+  <div class="post-nav__layouts" role="group" aria-label="Layout">
+    {% for l in layouts %}
+    <button type="button" class="post-nav__layout" data-layout="{{ l.id }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ l.label }}</button>
+    {% endfor %}
+  </div>
+  {% endunless %}
+
+  <p class="post-nav__count" id="post-count">{{ site.posts.size }} posts</p>
+
+  <div class="post-nav__years">
+    {% for year in posts_by_year %}
+    <a class="post-nav__year" href="#y-{{ year.name }}">{{ year.name }}<small>{{ year.size }}</small></a>
+    {% endfor %}
+  </div>
+
+  {% assign hi = posts_by_year.first.name | plus: 0 %}
+  {% assign lo = posts_by_year.last.name | plus: 0 %}
+  {% assign max = 1 %}
+  {% for year in posts_by_year %}{% if year.size > max %}{% assign max = year.size %}{% endif %}{% endfor %}
+  <div class="post-hist" style="--max: {{ max }}">
+    {% for y in (lo..hi) reversed %}
+      {% assign key = y | append: "" %}
+      {% assign found = posts_by_year | where: "name", key | first %}
+      {% assign n = found.size | default: 0 %}
+      {% if n > 0 %}
+      <a class="post-hist__bar" href="#y-{{ y }}" data-year="{{ y }}" style="--n: {{ n }}" title="{{ y }}: {{ n }} post{% if n != 1 %}s{% endif %}"><i></i><b>{{ y | modulo: 100 | prepend: '0' | slice: -2, 2 }}</b></a>
+      {% else %}
+      <span class="post-hist__bar post-hist__bar--empty" data-year="{{ y }}" style="--n: 0" title="{{ y }}: no posts"><i></i><b>{{ y | modulo: 100 | prepend: '0' | slice: -2, 2 }}</b></span>
+      {% endif %}
+    {% endfor %}
+  </div>
+</nav>

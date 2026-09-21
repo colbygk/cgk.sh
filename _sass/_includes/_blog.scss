@@ -1,222 +1,265 @@
 // - - - - - - - - - - - - - - - - - -
 
-// Blog
+// Blog – post list shared by every layout
 
 // - - - - - - - - - - - - - - - - - -
 
+// Scope rules to one layout of the post list (_includes/posts.html). Each
+// layout's own partial, _posts-<id>.scss, wraps its rules in this.
+@mixin post-layout($id) {
+  .posts[data-post-layout="#{$id}"] {
+    @content;
+  }
+}
+
 .blog {
   margin-top: 0;
-  padding: 20px 0 0;
+  padding: 20px 0 60px;
 
   @include mq(tabletp) {
-    padding: 35px 0 0;
+    padding: 35px 0 80px;
   }
 
   @include mq(tabletl) {
-    padding: 35px 40px 0;
+    padding: 35px 40px 80px;
   }
 
   @include mq(laptop) {
-    padding: 53px 60px 0;
+    padding: 53px 60px 100px;
   }
 }
 
-.blog-post {
-  margin-top: 30px;
+.posts [hidden] {
+  display: none !important;
+}
 
-  @include mq(phonel) {
-    margin-top: 10px;
-  }
+// Nav bar: filter, layout switcher, count, year links, histogram
 
-  @include mq(tabletp) {
-    margin-top: 10px;
-  }
+.post-nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  background: $background-color;
+  border-bottom: 1px solid $border-color;
+}
 
-  @include mq(tabletl) {
-    margin-top: 10px;
-  }
+.post-nav__filter {
+  font: inherit;
+  font-size: 15px;
+  width: 220px;
+  max-width: 100%;
+  padding: 4px 12px;
+  color: $text-medium-color;
+  background: $background-alt-color;
+  border: 1px solid $border-color;
+  border-radius: 6px;
+}
 
-  @include mq(laptop) {
-    margin-top: 10px;
-  }
+.post-nav__layouts {
+  display: flex;
+  gap: 4px;
+}
 
-  @include mq(desktop) {
-    margin-top: 10px;
-  }
+.post-nav__layout {
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 1px 12px;
+  color: $text-medium-color;
+  background: transparent;
+  border: 1px solid $border-color;
+  border-radius: 999px;
 
-  &:first-child {
-    margin-top: 0;
+  &[aria-pressed="true"] {
+    background: $accent-color;
+    border-color: $accent-color;
   }
 }
 
-.blog-post__image {
-  margin-top: 20px;
+.post-nav__count {
+  margin: 0 0 0 auto;
+  font-size: 13px;
+  color: $text-muted-color;
+}
+
+.post-nav__years {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  flex: 1 1 100%;
+}
+
+.post-nav__year {
+  font-size: 14px;
+  font-weight: $regular-weight;
+  padding: 1px 9px;
+  color: $text-medium-color;
+  background: $background-alt-color;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+
+  small {
+    margin-left: 3px;
+    color: $text-muted-color;
+  }
+
+  &:hover {
+    background: $accent-color;
+    text-decoration: none;
+  }
+}
+
+// Posts-per-year histogram; only the index layout shows it.
+.post-hist {
+  display: none;
+  flex: 1 1 100%;
+  align-items: flex-end;
+  gap: 3px;
+  height: 72px;
+}
+
+.post-hist__bar {
+  flex: 1;
+  font-weight: $regular-weight;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  color: $text-muted-color;
+
+  i {
+    display: block;
+    width: 100%;
+    max-width: 28px;
+    height: calc(6px + var(--n) / var(--max) * 46px);
+    background: $accent-color;
+    border-radius: 2px 2px 0 0;
+  }
+
+  b {
+    margin-top: 3px;
+    font-weight: 400;
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    i {
+      background: $text-dark-color;
+    }
+  }
+}
+
+.post-hist__bar--empty i {
+  height: 2px;
+  background: $border-color;
+}
+
+// Posts
+
+.post-list {
+  min-width: 0;
+}
+
+// The theme's reset floats every <section>; the list needs them in flow.
+.post-year {
+  float: none;
+  margin-top: 0;
+  scroll-margin-top: calc(var(--post-nav-h, 64px) + 8px);
+}
+
+.post-year__label {
+  margin: 0;
+  font-family: $blog-title-font;
+  font-weight: $regular-weight;
+  color: $blog-year-color;
+  font-variant-numeric: tabular-nums;
+
+  small {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: $text-muted-color;
+  }
+}
+
+.post-year__posts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// The title link covers the whole post, so the image and excerpt click
+// through too.
+.post {
+  position: relative;
+}
+
+.post__title {
+  margin: 0;
+  font-weight: 500;
+  text-wrap: balance;
+
+  a {
+    font-weight: inherit;
+  }
+
+  a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.post__date {
+  font-size: 14px;
+  color: $text-muted-color;
+  font-variant-numeric: tabular-nums;
+}
+
+.post__excerpt {
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+  max-width: 70ch;
+  font-size: 15px;
+  line-height: 1.5;
+  color: $text-medium-color;
+}
+
+.post__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+
+.post__tag {
+  padding: 0 7px;
+  white-space: nowrap;
+  color: darken($accent-color, 50%);
+  background: rgba($accent-color, 0.35);
+  border-radius: 4px;
+}
+
+.post__image {
   display: block;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-
-  @include mq(tabletp) {
-    margin-top: 25px;
-  }
-
-  @include mq(tabletl) {
-    margin-top: 30px;
-  }
-
-  @include mq(laptop) {
-    margin-top: 40px;
-  }
+  border-radius: 4px;
 }
 
-.blog-post__header {
-  padding-top: 0.25em;
-  padding-left: 0.5em;
-  -webkit-backdrop-filter: blur(10px)  contrast(0.9) opacity(0.5);
-  backdrop-filter: blur(5px) contrast(0.1) opacity(0.5);
-}
-
-.blog-post__header_right {
-  padding-top: 0.25em;
-  padding-right: 0.5em;
-  -webkit-backdrop-filter: blur(10px)  contrast(0.9) opacity(0.5);
-  backdrop-filter: blur(10px)  contrast(0.9) opacity(0.5);
-  text-align: right;
-}
-
-.blog-post__thumb {
-        margin-top: 5px;
-        display: block;
-        width: 100%;
-        height: 150px;
-        padding-bottom: 7%;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        @include mq(tabletp) {
-                margin-top: 10px;
-        }
-
-        @include mq(tabletl) {
-                margin-top: 5px;
-        }
-
-        @include mq(laptop) {
-                margin-top: 15px;
-                height: 75px;
-        }
-}
-
-.blog-post__content {
-  font-family: $blog-subtitle-font;
-  margin-top: 0.5em;
-
-  @include mq(tabletp) {
-    margin-top: 0.5em;
-  }
-
-  @include mq(tabletl) {
-    margin-top: 0.5em;
-  }
-
-  @include mq(laptop) {
-    margin-top: 0.5em;
-  }
-}
-
-.blog-post__content_right {
-  font-family: $blog-subtitle-font;
-  margin-top: 0.5em;
-  text-align: right;
-
-  @include mq(tabletp) {
-    margin-top: 5px;
-  }
-
-  @include mq(tabletl) {
-    margin-top: 0.5em;
-  }
-
-  @include mq(laptop) {
-    margin-top: 0.5em;
-  }
-}
-
-
-.blog-post__title {
-  font-family: $blog-title-font;
-  margin-inline-end: 0px;
-}
-
-.blog-post__subtitle {
-  font-family: $blog-subtitle-font;
-  margin-top: 5px;
-  color: $text-light-color;
-}
-
-.pagination {
-  margin-top: 20px;
-  padding: 10px 20px 0;
-  overflow: hidden;
-
-  @include mq(tabletp) {
-    padding: 10px 40px 0;
-  }
-
-  @include mq(tabletl) {
-    padding: 10px 40px 0;
-  }
-
-  @include mq(laptop) {
-    padding: 10px 60px 0;
-  }
-}
-
-// Top-of-list pagination – keep it tight against the header so it's
-// visible without scrolling, but still inside the right column on tabletl+.
-.pagination--top {
-  margin-top: 10px;
-  padding-top: 10px;
-  padding-bottom: 4px;
-
-  @include mq(tabletp) {
-    margin-top: 14px;
-  }
-
-  @include mq(tabletl) {
-    margin-top: 20px;
-  }
-
-  @include mq(laptop) {
-    margin-top: 24px;
-  }
-
-  .button {
-    padding: 8px 14px;
-    font-size: 12px;
-  }
-}
-
-.pagination__prev,
-.pagination__next {
-  width: 50%;
-
-  .button {
-    display: block;
-    text-align: center;
-  }
-}
-
-.pagination__prev {
-  float: left;
-  padding-right: $grid-spacing/2;
-}
-
-.pagination__next {
-  float: right;
-  padding-left: $grid-spacing/2;
+.post-list__empty {
+  padding: 24px 0;
+  color: $text-muted-color;
 }
