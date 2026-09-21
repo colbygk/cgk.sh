@@ -97,7 +97,16 @@ import it from `css/style.scss`.
 
 ## Tests
 
+Build checks run in the container, one file per area (`test/*_test.rb`):
+
 ```sh
-docker exec cgkyll-dev sh -c \
-  'jekyll build -d /tmp/verify && SITE=/tmp/verify ruby test/post_list_test.rb'
+docker exec cgkyll-dev sh -c 'jekyll build -d /tmp/verify &&
+  for t in test/*_test.rb; do SITE=/tmp/verify ruby $t; done'
+```
+
+Browser checks (the image viewer, `js/lightbox.js`) drive headless
+Chromium against the running dev server using only Node built-ins:
+
+```sh
+node --test 'test/browser/*.test.mjs'   # SITE_URL, CHROME to override
 ```

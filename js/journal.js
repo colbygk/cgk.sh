@@ -297,10 +297,7 @@
 						transitionDuration: 0
 					});
 							
-					// Init fluidbox
-					$this.find('.gallery__item__link').fluidbox({
-						loader: true
-					});
+					// Zoom is handled by js/lightbox.js (replaces Fluidbox).
 
 				}
 
