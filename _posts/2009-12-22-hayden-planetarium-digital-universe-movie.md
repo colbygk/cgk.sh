@@ -7,6 +7,6 @@ drupal_type: blog
 ---
 
 <div class="img-float-right" style="margin-top: .33em">
-  <object width="640" height="505"><param name="movie" value="http://www.youtube-nocookie.com/v/17jymDn0W6U&hl=en_US&fs=1&rel=0&hd=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube-nocookie.com/v/17jymDn0W6U&hl=en_US&fs=1&rel=0&hd=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="505"></embed></object>
+  <div class="post-video"><iframe src="https://www.youtube-nocookie.com/embed/17jymDn0W6U" title="The Known Universe" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
   Credit: <a href="http://www.haydenplanetarium.org/universe/">Hayden Planetarium</a>
   </div>

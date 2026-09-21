@@ -10,7 +10,7 @@ SITE = ENV.fetch('SITE', '_site')
 
 class PostAssetsTest < Minitest::Test
   # Local references to files (not pages): /files/…, /images/…, etc.
-  REF = %r{(?:src|href)="(/(?:files|images)/[^"#?]+)"}
+  REF = %r{(?:src|href|data|poster)="(/(?:files|images)/[^"#?]+)"}
 
   def test_local_files_referenced_by_posts_exist
     missing = Dir[File.join(SITE, 'blog/*.html')].flat_map do |page|

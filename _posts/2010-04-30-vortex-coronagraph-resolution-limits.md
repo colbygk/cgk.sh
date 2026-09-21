@@ -8,7 +8,7 @@ drupal_type: blog
 ---
 
 <div class="img-float-right">
- <img src="/webfm_send/99"/></a>
+ <img src="/webfm_send/99"/>
   Image of planets around HR8799, source: <a href="http://cfao.ucolick.org/members/view.php?id=33369&query=r%3Dmember%26l%3DM">C.Marois</a> et al <a href="http://dx.doi.org/10.1126/science.1166585">doi: 10.1126/science.1166585</a>
 </div>
 
@@ -17,21 +17,21 @@ The star <a href="http://en.wikipedia.org/wiki/HR_8799">HR8799</a> hit the news 
 However, a counter intuitive relationship between resolution and primary mirror size can enable this sort of direct imaging of exoplanets on much smaller telescopes.
 
 <div class="img-float-right">
- <img src="/webfm_send/103"/></a>
+ <img src="/webfm_send/103"/>
   figure 1, source: C G-K
 </div>
 <div class="img-float-right">
- <img src="/webfm_send/102"/></a>
+ <img src="/webfm_send/102"/>
   figure 2, source: C G-K
 </div>
 
 <div class="img-float-left">
- <img src="/webfm_send/104"/></a>
+ <img src="/webfm_send/104"/>
   Image of planets (labeled b,c,d) in HR8799, source: Nature, <a href="http://dx.doi.org/10.1038/nature09007">doi:10.1038/nature09007</a>
 </div>
 
 <div class="img-float-right">
- <img src="/webfm_send/105"/></a>
+ <img src="/webfm_send/105"/>
   figure 3, source: Nature, <a href="http://dx.doi.org/10.1038/nature09007">doi:10.1038/nature09007</a>
 </div>
 This relationship is also an important consideration when planning to buy a telescope, to avoid buying one with a larger mirror, hoping that you will see finer detail.

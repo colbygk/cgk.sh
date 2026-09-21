@@ -22,6 +22,7 @@ Jordan: You will be able to see a digital proof of your garments before we print
 
 
 
+</li>
 <li>http://ultimateshirtcompany.com/
 quote: $957 with shipping and tax
 
@@ -36,7 +37,9 @@ The additional cost for the XXL shirts is factored into the $4.11 per shirt pric
 
 -------
 
+</li>
 <li>http://socialimprints.com/ (what somafm uses, recommended by Rusty Hodge)
 $885.54 *without* shipping and with tax
 $930.28 *with* shipping and with tax
+</li>
 </ol>

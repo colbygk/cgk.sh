@@ -11,7 +11,7 @@ While working on <s>rgslffi</s>GSL4r, I needed to define a mapping for the gsl_c
 
 Here's my attempt:
 
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
   class GSL_Complex < ::FFI::Struct
     layout :dat, [:double, 2]
 
@@ -48,54 +48,54 @@ Here's my attempt:
       return "(#{self[:dat][R]},#{self[:dat][I]})"
     end
   end
-{/syntaxhighlighter}
+{% endhighlight %}
 
 The methods added to the class definition match up with the GSL provided <a href="http://www.gnu.org/software/gsl/manual/html_node/Representation-of-complex-numbers.html">macros for manipulating gsl_complex types</a> and should be familiar to anyone who has used GSL or is looking at the GSL documentation.
  
 I thought that it would be nice to add an initializer method that would provide for setting defaults at creation time, such as:
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
     def initialize( r, i )
       self[:dat][R] = r
       self[:dat][I] = i
     end
-{/syntaxhighlighter}
+{% endhighlight %}
 
 This fails spectacularly<a href="#stacktrace">[1]</a> in both JRuby, and, slightly less spectacularly, in MRI.  The error seems to be related to not knowing the layout of the struct before the code in the initializer is attempting to assign values.  It also seems to happen when you define even an empty initializer method.  I'm sure there's some expected reason for this to occur...
 
 MRI 1.8.6:
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
 irb(main):002:0> a=GSL_Complex.new(1.0,2.0)
 RuntimeError: layout not set for Struct
 	from ./rgslffi/complex.rb:36:in `[]'
 	from ./rgslffi/complex.rb:36:in `initialize'
 	from (irb):2:in `new'
 	from (irb):2
-{/syntaxhighlighter}
+{% endhighlight %}
 
 It appears that the super class initializer needs to be called, here's the new version, but, with a different error (line numbers included):
 
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
     def initialize( r, i )
      super()
       self[:dat][R] = r
       self[:dat][I] = i
     end
-{/syntaxhighlighter}
+{% endhighlight %}
 
 But the error doesn't occur with creating a new copy of GSL_Complex, but when sending that object to RGSLffi::gsl_complex_conjugate:
 
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
 TypeError: can't convert FFI::MemoryPointer into Float
 	from ./rgslffi/complex.rb:40:in `[]='
 	from ./rgslffi/complex.rb:40:in `initialize'
 	from (irb):4:in `gsl_complex_conjugate'
 	from (irb):4
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Hrm...
 
 <a name="stacktrace">[1]</a> JRuby 1.4.0:
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
 StructLayout.java:467:in `put': java.lang.NullPointerException
 	from org/jruby/ext/ffi/StructLayout$Array$i_method_2_0$RUBYINVOKER$put.gen:-1:in `call'
 	from CachingCallSite.java:330:in `cacheAndCall'
@@ -229,4 +229,4 @@ StructLayout.java:467:in `put': java.lang.NullPointerException
 	from Main.java:272:in `run'
 	from Main.java:117:in `run'
 	from Main.java:97:in `main'
-{/syntaxhighlighter}
+{% endhighlight %}

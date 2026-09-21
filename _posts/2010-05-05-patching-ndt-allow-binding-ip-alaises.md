@@ -18,7 +18,7 @@ NDT servers are pretty nifty, here, try out ours: <a href="http://ndt.hcro.org">
 
 These changes work against ndt-3.6.2b.tar.gz (current as of 12 Apr 2010, see <a href="http://software.internet2.edu/sources/ndt/">http://software.internet2.edu/sources/ndt/</a>).
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:~/inst # tar xzf ndt-3.6.2b.tar.gz 
 uxmal:~/inst # patch -p1 < specify-address.patch 
 patching file ndt-3.6.2b/src/fakewww.c
@@ -38,10 +38,10 @@ May  4 21:06:03 fakewww server started (NDT version 3.6.2b)
 	error log = /usr/local/ndt/error_log
 	basedir = /usr/local/ndt
 	debug level set to 1
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Full patch:
-{syntaxhighlighter brush:diff;}
+{% highlight diff %}
 diff -up unpatched/ndt-3.6.2b/src/fakewww.c patched/ndt-3.6.2b/src/fakewww.c
 --- unpatched/ndt-3.6.2b/src/fakewww.c	2010-03-25 08:45:12.000000000 -0700
 +++ patched/ndt-3.6.2b/src/fakewww.c	2010-05-04 20:25:09.000000000 -0700
@@ -119,13 +119,13 @@ diff -up unpatched/ndt-3.6.2b/src/usage.c patched/ndt-3.6.2b/src/usage.c
      printf("  -t, --ttl #amount      - specify maximum number of hops in path (default is 10)\
 n");
      printf("  --dflttree fn          - specify alternate 'Default.tree' file\n");
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Further notes on installation:
 
 The host I decided to install on is running <a href="http://www.opensuse.org">openSUSE 11.1</a> Linux.  The NDT tools require special kernel patches to be installed, which, are helpfully provided at <a href="http://www.web100.org/download/">web100.org</a>.  The openSUSE 11.1 release comes with Linux Kernel 2.6.27 (sub-versioned to 2.6.27.21-0.1).  You should install kernel sources, sun's JDK, and libpcap-devel:
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:~/inst/ndt-3.6.2b # zypper shell
 zypper> install kernel-source
 ...
@@ -133,11 +133,11 @@ zypper> install java-1_5_0-sun-devel
 ...
 zypper> install libpcap-devel
 ...
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Now, make backups of your running kernel and modules in /lib/modules/`uname -r`, then apply the patches:
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:/usr/src/linux # patch -p1 < ~/inst/web100/web100-2.6.27-2.5.22-200810130047.patch
 patching file Documentation/web100/locking.txt
 patching file Documentation/web100/proc_interface.txt
@@ -147,19 +147,19 @@ Hunk #1 FAILED at 1.
 1 out of 1 hunk FAILED -- saving rejects to file Makefile.rej
 patching file fs/proc/Makefile
 ...
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Note that the patches applied cleanly, except for Makefile, which collided with the "EXTRAVERSION", which is to be expected.  If you follow the <a href="http://www.internet2.edu/pubs/ndt-cookbook.pdf">NDT cookbook</a> or are already familiar with compiling the Linux Kernel, you'll know why.  Short answer, edit with:
 
-{syntaxhighlighter brush: plain;}
+{% highlight text %}
 EXTRAVERSION = .21-web100
-{/syntaxhighlighter}
+{% endhighlight %}
 
 This will isolate the web100 changes away from pre-existing modules, making it easier to back out of the changes.
 
 After this,
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:/usr/src/linux # make oldconfig
 scripts/kconfig/conf -o arch/x86/Kconfig
 #
@@ -187,14 +187,14 @@ uxmal:/usr/src/linux # make install
 ...
 uxmal:/usr/src/linux # mkinitrd
 ...
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Since openSUSE uses grub, I edited /boot/grub/menu.lst and made sure the default kernel to boot was the web100 enabled one.  After a successful reboot, I confirmed web100 extensions were active by:
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:/usr/src/linux # cat /proc/web100/header | head -1
 2.5.22 200810130047 net100
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Which is the version of web100 patches I installed.  Woop!
 
@@ -202,7 +202,7 @@ Notes,
 
 If you do not have a copy of the sun JDK, the default JDK that comes with openSUSE 11.1 is based off of the GNU Java Compiler, which tries to create executables and you will see an error like this when building ndt,
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:~/inst/ndt-3.6.2b # make
 ...
 /usr/lib/gcc/i586-suse-linux/4.3/../../../crt1.o: In function `_start':
@@ -213,23 +213,23 @@ make[2]: Leaving directory `/root/inst/ndt-3.6.2b/Admin'
 make[1]: *** [all-recursive] Error 1
 make[1]: Leaving directory `/root/inst/ndt-3.6.2b'
 make: *** [all] Error 2
-{/syntaxhighlighter}
+{% endhighlight %}
 
 I picked 1.5 JDK since NDT is officially supported and tested against JDK 1.4.2.  Enough has changed between 1.4.2 and 1.6 that I thought this best.  I'm curious to hear if anyone has tried NDT against JDK 1.6...
 
 If you don't install the libpcap-devel libraries and headers, running ./configure in ndt will skip attempting to build web100srv and if you try to build it by hand, you'll see the following error,
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:~/inst/ndt-3.6.2b/src # make web100srv
 gcc -DHAVE_CONFIG_H -I. -I.. -I/usr/local/include/web100  -I../I2util  '-DBASEDIR="/usr/local/ndt"'   -pedantic -Wall -O2 -DNDEBUG -DEXPERIMENTAL_ENABLED -DDATABASE_ENABLED -MT web100srv-web100srv.o -MD -MP -MF .deps/web100srv-web100srv.Tpo -c -o web100srv-web100srv.o `test -f 'web100srv.c' || echo './'`web100srv.c
 web100srv.c:140: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
 web100srv.c:141: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
 ...
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Finally, the startup script, ndt-3.6.2b/conf/ndt is moderately out of date.   With some changes, it can be pressed into service under openSUSE,
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 --- ndt	2010-05-04 22:30:04.000000000 -0700
 +++ /etc/init.d/ndt	2010-05-04 22:48:51.000000000 -0700
 @@ -5,7 +5,10 @@
@@ -340,30 +340,30 @@ Finally, the startup script, ndt-3.6.2b/conf/ndt is moderately out of date.   Wi
  }
  restart() {
  	stop
-{/syntaxhighlighter}
+{% endhighlight %}
 
 
 Note, this leaves the status messages not functioning, but start|stop will work.  To apply the patch, save the text to a file called ndt-init.patch in ndt-3.6.2b/conf, then,
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:~/inst/ndt-3.6.2b/conf/ # patch -p0 < ndt-init.patch 
 patching file ndt
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Copy the resulting ndt to /etc/init.d/ndt then,
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:~/inst/ndt-3.6.2b/conf # chkconfig ndt on
 uxmal:~/inst/ndt-3.6.2b/conf # chkconfig ndt
 ndt  on
 uxmal:~/inst/ndt-3.6.2b/conf # /etc/init.d/ndt start
 Starting web100srv:                                                                 done
 Starting fakewww:                                                                   done
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Last, the default html page must be created using ndt-3.6.2b/conf/create-html.sh,
 
-{syntaxhighlighter brush: bash;}
+{% highlight shell %}
 uxmal:~/inst/ndt-3.6.2b # conf/create-html.sh 
 Welcome to the NDT server configuration program.  This
 program will create a custom tcpbw100.html file for your site.
@@ -381,6 +381,6 @@ must move this file into the ndt_DATA directory [/usr/local/ndt]
 created during the 'make' process.
 Do you want to install this file now? [yes]  : 
 Enter location [/usr/local/ndt]  : 
-{/syntaxhighlighter}
+{% endhighlight %}
 
 et voila.

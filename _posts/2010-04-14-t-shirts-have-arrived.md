@@ -7,7 +7,7 @@ drupal_type: blog
 ---
 
 <div class="img-float-left">
- <img src="/webfm_send/93"/></a>
+ <img src="/webfm_send/93"/>
   Designed by Shrewd Raven, manufactured by <a href="http://www.brokenarrowwear.com/">Broken Arrow Wear</a>
 </div>
 

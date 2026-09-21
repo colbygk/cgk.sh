@@ -11,27 +11,27 @@ Added automatically generated method wrappers for calls into the GSL library usi
 <s>rgslffi</s> GSL4r is a set of wrapper routines I'm creating around <a href="http://www.gnu.org/software/gsl/">GNU Scientific Library (GSL)</a> mathematical routines using the <a href="http://wiki.github.com/ffi/ffi/why-use-ffi">Foreign Function Interface (FFI)</a> library for Ruby/JRuby.  Using FFI helps avoid tying GSL only to the C based Ruby interpreters and potentially will make the library universally available across all Ruby implementations.  Something we'd like to have while using JRuby for the ATA.
 
 There's a lot of busy work involved, with long lists of GSL functions that need wrapping, and, I realized that simple wrapping would make my library cumbersome to use, for example, when using methods to manipulate complex numbers, if I only made a wrapper for the function:
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
    attach_function :gsl_complex_add, [ GSL_Complex.by_value, GSL_Complex.by_value ], GSL_Complex.by_value
-{/syntaxhighlighter}
+{% endhighlight %}
 
 And the code to use it:
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
   a=GSL_Complex.create(1,1)
   b=GSL_Complex.create(1,1)
   puts gsl_complex_add(a,b)
-{/syntaxhighlighter}
+{% endhighlight %}
 
 But what if I wanted to be able to do something like:
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
   a=GSL_Complex.create(1,1)
   b=GSL_Complex.create(1,1)
   puts a.add(b)
-{/syntaxhighlighter}
+{% endhighlight %}
 
 The above would require creating another wrapper routine, with a shortened name.  Of course, there's always the overriding of operators, but that's for later.  I'd rather not have to do that much typing (at least quadruple the lines of code on top of the attach_function statements) and then have to worry about subtle typos creating bugs... bleah. Also, any attached functions in the same module namespace as the definition of the class for that module (e.g. GSL_Complex) ends up with all of those attached functions as members of that object, but without any nice invocation properties, i.e.:
 
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
   # attaching in the same namespace as GSL_Complex
   a=GSL_Complex.create(1,1)
   a.methods.grep(/gsl_complex/)
@@ -43,7 +43,7 @@ The above would require creating another wrapper routine, with a shortened name.
 	from (irb):6
   a.abs(a)
   => 1.4142135623731
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Double bleah!
 
@@ -52,16 +52,16 @@ So, what to do?
 I could try to make a parser of the gsl headers and create wrappers from that, but that seems inelegant to me, though, not necessarily a bad solution.  I may still pursue this option at a later time.
 
 What I did was make use of the method_missing method for Object to catch any unrecognized method invocations, and then create a function at runtime if the method appears to match a function in the GSL library.  It also handles the full name, or a shortened version, e.g.
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
 gsl_complex_add()
-{/syntaxhighlighter}
+{% endhighlight %}
 vs
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
 add()
-{/syntaxhighlighter}
+{% endhighlight %}
 
 Here it is:
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
   class GSL_Complex < ::FFI::Struct
   ..
     $globalGSLComplexLock = Monitor.new
@@ -79,7 +79,7 @@ Here it is:
           end
         end
 
-        self.class.class_eval &lt;&lt;-end_eval
+        self.class.class_eval <<-end_eval
           def #{called_method}(*args, &block)
             args.insert(0, self)
             ::GSL4r::Complex::Methods::#{prefix}#{called_method}( *args, &block )
@@ -92,7 +92,7 @@ Here it is:
     end # method_missing
   ...
   end
-{/syntaxhighlighter}
+{% endhighlight %}
 
 This first checks if the called method matches the Module function call gsl_complex_#{called_method} (where called_method might be 'add').
 
@@ -101,7 +101,7 @@ If it finds a match (respond_to, lines 11,13), it will then create a new method 
 Finally, this is wrapped up in a synchronized block, using a Monitor object, to ensure thread safety.  It is only unsafe the first time the method is invoked (and non-existent at that point).  Every time the method is invoked after, it should not hit method_missing.  Even though all threads run under one thread in MRI, it won't be the case for our use of JRuby, and possibly not for MRI 1.9.
 
 Some fun playing around in irb:
-{syntaxhighlighter brush: ruby;}
+{% highlight ruby %}
 colby@gks lib $ irb -r gsl4r
 irb(main):001:0> require 'gsl4r/complex'
 => true
@@ -125,4 +125,4 @@ irb(main):013:0> a.logabs
 => 0.346573590279973
 irb(main):014:0> a.gsl_complex_logabs
 => 0.346573590279973
-{/syntaxhighlighter}
+{% endhighlight %}

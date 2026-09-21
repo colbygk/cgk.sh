@@ -32,7 +32,7 @@ Depressingly, a Google image search for "Allen Telescope Array" turns up handsom
 [6]<a name="bima"><a href="http://bima.astro.umd.edu/">University of Maryland BIMA/CARMA</a></a>
 [7]<a name="wikipedia-carma"><a href="http://en.wikipedia.org/wiki/Combined_Array_for_Research_in_Millimeter-wave_Astronomy">Wikipedia article on CARMA</a></a>
 </p>
-<br/><p/>
+<br/>
 
 <div class="img-float-left">
   <img src="/webfm_send/46"/>

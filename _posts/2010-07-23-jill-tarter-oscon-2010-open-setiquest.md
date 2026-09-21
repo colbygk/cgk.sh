@@ -12,4 +12,4 @@ drupal_type: blog
 
 Jill Tarter's talk at <a href="http://www.oscon.com/oscon2010">OSCON 2010</a> (<a href="http://www.oscon.com/oscon2010/public/schedule/speaker/76484">her speaker bio</a>)
 
-<embed src="http://blip.tv/play/AYHwpQYC" type="application/x-shockwave-flash" width="700" height="438" allowscriptaccess="always" allowfullscreen="true"></embed>
+<div class="post-video"><iframe src="https://www.youtube-nocookie.com/embed/eyX5AZHI_Jg" title="OSCON 2010: Jill Tarter, Open SETIQuest" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
