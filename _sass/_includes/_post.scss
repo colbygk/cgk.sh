@@ -1,0 +1,179 @@
+// - - - - - - - - - - - - - - - - - -
+
+// Blog post page (_layouts/post.html): Baloo title over a serif body set
+// to a readable measure. Layers on top of .intro and .single.
+
+// - - - - - - - - - - - - - - - - - -
+
+$post-measure: 42rem;
+
+.post-page__head .wrap,
+.post-page__body .wrap {
+  max-width: $post-measure;
+  margin-left: 0;
+}
+
+.post-page__date {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text-muted-color;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-page__title {
+  margin: 0;
+  font-family: $blog-title-font;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.1;
+  color: $text-medium-color;
+  text-wrap: balance;
+
+  @include mq(tabletp) {
+    font-size: 40px;
+  }
+
+  @include mq(laptop) {
+    font-size: 46px;
+  }
+}
+
+.post-page__body {
+  font-family: $post-body-font;
+  font-size: 17px;
+  line-height: 1.68;
+  color: $text-medium-color;
+  font-optical-sizing: auto;
+
+  @include mq(tabletp) {
+    font-size: 19px;
+  }
+
+  // The theme sizes p/ul/ol per breakpoint; let the body size rule.
+  p, ul, ol, li {
+    font-size: 1em;
+    line-height: inherit;
+  }
+
+  p {
+    margin: 0 0 1.15em;
+  }
+
+  a {
+    color: $text-dark-color;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: rgba($text-dark-color, 0.35);
+
+    &:hover {
+      color: $text-dark-color;
+      text-decoration-color: $text-dark-color;
+    }
+  }
+
+  p a {
+    font-weight: inherit;
+  }
+
+  b, strong {
+    font-weight: 600;
+  }
+
+  h2, h3, h4, h5, h6 {
+    margin: 1.6em 0 0.5em;
+    font-family: $blog-title-font;
+    font-weight: 500;
+    line-height: 1.2;
+    color: $text-medium-color;
+  }
+
+  h2 { font-size: 28px; }
+  h3 { font-size: 23px; }
+  h4, h5, h6 { font-size: 19px; }
+
+  blockquote {
+    margin: 1.4em 0;
+    padding: 0.1em 0 0.1em 1.1em;
+    border-left: 3px solid $accent-color;
+    font-family: inherit;
+    font-style: italic;
+    font-size: 1.05em;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: inherit;
+
+    p {
+      font: inherit;
+      letter-spacing: 0;
+    }
+  }
+
+  // Code, tables and rules use the full measure, not the theme's 70–80%.
+  .highlighter-rouge,
+  table,
+  hr {
+    max-width: 100%;
+  }
+
+  figure.highlight {
+    border-radius: 4px;
+
+    pre {
+      padding: 14px 18px;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // Captioned images from the Drupal import.
+  .img-float-right,
+  .img-float-left {
+    margin: 0.3em 0 1.2em;
+    font-family: $blog-title-font;
+    font-size: 13px;
+    line-height: 1.4;
+    color: $text-muted-color;
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      margin-bottom: 6px;
+      border-radius: 3px;
+    }
+  }
+
+  @include mq(tabletp) {
+    .img-float-right {
+      float: right;
+      width: 45%;
+      margin: 0.3em 0 1em 1.6em;
+    }
+
+    .img-float-left {
+      float: left;
+      width: 45%;
+      margin: 0.3em 1.6em 1em 0;
+    }
+
+    // A left/right pair sits side by side; what follows starts below both.
+    .img-float-left + .img-float-right + * {
+      clear: both;
+    }
+  }
+
+  .wrap::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
